@@ -39,6 +39,30 @@ def display_list():
             print(f'\033[1m {task} \033[m')
 
 
+def display_done_tasks():
+    """
+    Displays tasks on the done worksheet
+    """
+    done_list = SHEET.worksheet('Done').get_all_values()
+    if done_list == []:
+        print('You have no completed tasks!\n')
+        print('Loading main menu...\n')
+        user_options()
+    else:
+        print(f"""Well done! You've completed {len(done_list)} tasks.
+Here's your full list: """)
+        for task in list(done_list):
+            print(f'\033[1m {task} \033[m')
+
+        choice = input('''Enter MENU to return to the \
+main menu, or QUIT to exit: ''')
+        if choice.lower() == 'menu':
+            user_options()
+        elif choice.lower() == 'quit':
+            exit()
+        else:
+            print('Invalid selection. Please try again, using the Y or N key')
+
 def create_task():
     """
     Asks user to input their task and appends it to Tasks worksheet
@@ -79,7 +103,7 @@ def task_done():
     # If no matching task is found, user given choice to try again or return to menu
     except (TypeError, AttributeError) as e:
         print(f'''\nNo task found matching {find_task}... Please try again, \
-or enter the word menu to return to the main menu.\n''')
+or enter the MENU to return to the main menu.\n''')
         # Convert string to lower in case caps lock is enabled
         if find_task.lower() == 'menu':
             # Return user to the menu
@@ -97,7 +121,8 @@ def user_options():
     choice = input('''\nWhat would you like to do?\n
 1: Create a new task\n2: View your to do list
 3: Mark a task as done
-4: Edit a task\nOr type 'exit' to quit: ''')
+4: Edit a task\n5: View your completed tasks
+Or type 'exit' to quit: ''')
     # Checking user input against the listed options
     if choice == str(1):
         print("")
@@ -115,6 +140,10 @@ def user_options():
         print("")
         print('I need to make function to edit task...')
         user_options()
+    elif choice == str(5):
+        print('Loading your completed tasks...')
+        #  os.system('clear')
+        display_done_tasks()
     elif choice.lower() == 'exit':
         exit()
     # Tell user if their choice is not valid
