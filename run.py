@@ -20,9 +20,13 @@ def app_load():
 
 
 def display_list():
-    print('Here are your tasks to complete:')
     todo_list = SHEET.worksheet('Tasks').get_all_values()
-    print(todo_list)
+    if todo_list == []:
+        print('Your to do list is empty! Add a task.')
+        create_task()
+    else:
+        print('Here are your tasks to complete:')
+        print(todo_list)
 
 
 def create_task():
@@ -38,4 +42,4 @@ def main():
 
 
 main()
-create_task()
+#create_task()
