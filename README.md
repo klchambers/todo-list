@@ -12,7 +12,7 @@
   - [Testing Methodology](#testing-methodology)
   - [Pep-8 Code Analysis](#pep-8-code-analysis)
   - [Development](#development)
-  - [Contributing to Quizzit](#contributing-to-Quizzit)
+  - [Contributing](#contributing)
   - [Deployment](#deployment)
   - [Further Development and Future Features](#further-development-and-future-features)
 - [Technologies Used](#technologies-used)
@@ -94,9 +94,9 @@
 
 
 
-<a id=contributing-to-Quizzit></a>
+<a id=contributing></a>
 
-### Contributing to Quizzit
+### Contributing
 
 
 
