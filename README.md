@@ -1,32 +1,130 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+**Table of contents:**
 
-Welcome,
+- [Introduction](#introduction)
+- [Deployed Site](#deployed-site)
+- [User Experience](#user-experience)
+  - [User Goals](#user-goals)
+  - [User Stories](#user-stories)
+  - [Site Owner's Goals](#site-owners-goals)
+- [Features](#features)
+  - [Data Model](#data-model)
+- [Testing and Validation](#testing-and-validation)
+  - [Testing Methodology](#testing-methodology)
+  - [Pep-8 Code Analysis](#pep-8-code-analysis)
+  - [Development](#development)
+  - [Contributing to Quizzit](#contributing-to-Quizzit)
+  - [Deployment](#deployment)
+  - [Further Development and Future Features](#further-development-and-future-features)
+- [Technologies Used](#technologies-used)
+- [Acknowledgements](#acknowledgements)
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+<a id=introduction></a>
 
-## Reminders
+## Introduction
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
 
-## Creating the Heroku app
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+<a id=deployed-site></a>
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## Deployed Site
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
 
-Connect your GitHub repository and deploy as normal.
+<a id=user-experience></a>
 
-## Constraints
+## User Experience
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+<a id=user-goals></a>
 
----
+### User Goals
 
-Happy coding!
+
+
+<a id=user-stories></a>
+
+### User Stories
+
+
+
+<a id=site-owners-goals></a>
+
+### Site Owner's Goals
+
+
+
+<a id=features></a>
+
+## Features
+
+
+
+<a id=data-model></a>
+
+### Data Model
+
+
+
+<a id=testing-and-validation></a>
+
+## Testing and Validation
+
+
+
+<a id=testing-methodology></a>
+
+### Testing Methodology
+
+
+
+<a id=pep8-code-analysis></a>
+
+#### Pep-8 Code Analysis
+
+
+
+<a id=development-and-deployment></a>
+
+## Development and Deployment
+
+
+
+<a id=development></a>
+
+### Development
+
+
+
+<a id=contributing-to-Quizzit></a>
+
+### Contributing to Quizzit
+
+
+
+<a id=deployment></a>
+
+### Deployment
+
+
+
+<a id=further-development-and-future-features></a>
+
+### Further Development and Future Features
+
+
+
+<a id=technologies-used></a>
+
+## Technologies Used
+
+- Visual Studio Code: Code editing
+- [GitHub](https://github.com/): Source control
+- [Heroku](https://www.heroku.com): Live deployment of site
+- [Code Institute PEP8 Linter](https://pep8ci.herokuapp.com/): Python code analysis tool
+
+<a id=acknowledgements></a>
+
+## Acknowledgements
+
+Course content from Code Institute's Diploma in Full Stack Software Development has been useful and in teaching programming concepts and Python methods.
+
+Guidance from Code Institute mentor Brian O'Hare has been invaluable throughout stages of this project's inception and development.
