@@ -71,9 +71,10 @@ def task_done():
         # Looks for cell with matching value to find_task,
         # Assign this to the done_task var
         done_task = task_list.find(find_task)
+        # Need to delete task from cell and shift all cells up one here...
+        task_list.delete_rows(done_task.row)
         # Adds the completed task to the Done sheet
         done_list.append_row([done_task.value])
-        # Need to delete task from cell and shift all cells up one here...
 
     # If no matching task is found, user given choice to try again or return to menu
     except (TypeError, AttributeError) as e:
