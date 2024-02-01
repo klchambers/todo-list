@@ -33,7 +33,10 @@ def display_list():
         create_task()
     else:
         print('Here are your tasks to complete:')
-        print(todo_list)
+        for task in list(todo_list):
+            # after escape character 033[1m sets text weight to bold,
+            # 033[0m after task resets to default
+            print(f'\033[1m {task} \033[m')
 
 
 def create_task():
