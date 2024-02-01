@@ -1,6 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
-import os  # use os.system('clear') to clean up output
+import os
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -75,6 +75,7 @@ main menu, or QUIT to exit: ''')
         else:
             print('Invalid selection. Please try again, using the Y or N key')
 
+
 def create_task():
     """
     Asks user to input their task and appends it to Tasks worksheet
@@ -115,7 +116,8 @@ def task_done():
         # Adds the completed task to the Done sheet
         done_list.append_row([done_task.value])
 
-    # If no matching task is found, user given choice to try again or return to menu
+    # If no matching task is found, user given choice
+    # to try again or return to menu
     except (TypeError, AttributeError) as e:
         print(f'''\nNo task found matching {find_task}... Please try again, \
 or enter the MENU to return to the main menu.\n''')
