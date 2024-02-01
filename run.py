@@ -1,6 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
-import os # use os.system('clear') to clean up output
+import os  # use os.system('clear') to clean up output
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -18,8 +18,7 @@ def app_load():
     """
     Prints welcome message to user on app load and runs user_options function
     """
-    print('Welcome to your to-do list')
-    print("")
+    print('\nWelcome to your to-do list')
     user_options()
 
 
@@ -52,17 +51,24 @@ def user_options():
     """
     Uses if/else to take user input and run corresponding function
     """
-    choice = input("\nWhat would you like to do?\n1: Create a new task\n2: View your to do list\n3: Edit a task\nor enter 0 to quit: ")
+
+    choice = input('''\nWhat would you like to do?\n
+1: Create a new task\n2: View your to do list
+3: Edit a task\nType 'exit' to quit: ''')
+
     if choice == str(1):
+        print("")
         create_task()
         user_options()
     elif choice == str(2):
+        print("")
         display_list()
         user_options()
     elif choice == str(3):
+        print("")
         print('I need to make function to edit task...')
         user_options()
-    elif choice == str(0):
+    elif choice.lower() == 'exit':
         exit()
     else:
         print('\nInvalid selection, please try again.\n')
@@ -74,4 +80,3 @@ def main():
 
 
 main()
-#create_task()
