@@ -14,10 +14,18 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('todo-list-app')
 
 
+def clear_terminal():
+    """
+    Clears the terminal when called, improving readability
+    """
+    os.system('clear')
+
+
 def app_load():
     """
     Prints welcome message to user on app load and runs user_options function
     """
+    clear_terminal()
     print('\nWelcome to your to-do list')
     user_options()
 
@@ -27,6 +35,8 @@ def display_list():
     Checks if to do list is empty, if so, asks user to add a task
     if not empty, prints tasks
     """
+    print('Loading your to-do list...')
+    clear_terminal()
     todo_list = SHEET.worksheet('Tasks').get_all_values()
     if todo_list == []:
         print('Your to do list is empty! Add a task.')
@@ -43,6 +53,8 @@ def display_done_tasks():
     """
     Displays tasks on the done worksheet
     """
+    print('Loading your completed tasks...')
+    clear_terminal()
     done_list = SHEET.worksheet('Done').get_all_values()
     if done_list == []:
         print('You have no completed tasks!\n')
@@ -67,6 +79,8 @@ def create_task():
     """
     Asks user to input their task and appends it to Tasks worksheet
     """
+    print('Loading create task function...')
+    clear_terminal()
     task = input('\nEnter your todo: ')
     # Assigning tasks worksheet to task_sheet variable
     task_list = SHEET.worksheet('Tasks')
@@ -81,6 +95,7 @@ def task_done():
     """
     Use gspread .find method to match user input to cell, then move to Done tab
     """
+    clear_terminal()
     # Refactor? Move list to global scope with list in create_task function?
     task_list = SHEET.worksheet('Tasks')
     # Assigning Done worksheet to done_list var
@@ -142,7 +157,6 @@ Or type 'exit' to quit: ''')
         user_options()
     elif choice == str(5):
         print('Loading your completed tasks...')
-        #  os.system('clear')
         display_done_tasks()
     elif choice.lower() == 'exit':
         exit()
