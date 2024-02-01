@@ -57,13 +57,22 @@ def task_done():
     # Refactor? Move list to global scope with list in create_task function?
     task_list = SHEET.worksheet('Tasks')
     done_list = SHEET.worksheet('Done')
+    display_list()
     find_task = input("Which task have you completed? ")
-    # Looks for cell with matching value
-    done_task = task_list.find(find_task)
-    # Adds the completed task to the Done sheet
-    done_list.append_row([done_task.value])
-    # Need to delete task from cell and shift all cells up one here...
-    # Need to validate user input and give exception if no matching task is found
+
+    try:
+        # Looks for cell with matching value
+        done_task = task_list.find(find_task)
+        # Adds the completed task to the Done sheet
+        done_list.append_row([done_task.value])
+        # Need to delete task from cell and shift all cells up one here...
+    except (TypeError, AttributeError) as e:
+        print(f'''\nNo task found matching {find_task}... Please try again, \
+or enter the word menu to return to the main menu.\n''')
+        if find_task.lower() == 'menu':
+            user_options()
+        else:
+            task_done()
 
 
 def user_options():
