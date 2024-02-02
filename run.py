@@ -97,31 +97,43 @@ def delete_task():
     Use gspread .find method to match user input to cell, then delete row
     """
     clear_terminal()
+    # Assigning Tasks worksheet to variable
     task_list = SHEET.worksheet('Tasks')
+    # Displaying To Do list to user
     display_list()
+    # Adding user's task to delete to find_task variable
     find_task = input('Which task would you like to delete? ')
     try:
+        # Finding task and assigning to var
         task_to_delete = task_list.find(find_task)
+        # Sets True condition for deletion while loop
         deleting = True
+        # Keeps deletion in process until valid input has been confirmed
+        # or stopped by the user, will repeat if invalid data entered
         while deleting == True:
             print(f"You are about to delete {task_to_delete}")
             print("Are you sure?")
             print("")
+            # Confirming user's choice
             confirm_deletion = input("Type YES to confirm,\
  or NO to return to menu (input is case-sensitive): ")
-            
+            # Deleting task row if YES
             if confirm_deletion == 'YES':
                 print(f"Deleting {[task_to_delete]}...")
                 task_list.delete_rows(task_to_delete.row)
+                # Breaks while loop and returns to menu
                 deleting = False
                 clear_terminal()
                 user_options()
+            # Breaks while loop and returns to menu with no data deleted if NO
             elif confirm_deletion == 'NO':
                 deleting = False
                 clear_terminal()
                 user_options()
+            # While loop remains True and user asked to try again
             else:
                 print('Invalid choice, please try again')
+    # except statement will handle error if task matching input not found
     except:
         pass
 
@@ -133,7 +145,6 @@ def task_done():
     Use gspread .find method to match user input to cell, then move to Done tab
     """
     clear_terminal()
-    # Refactor? Move list to global scope with list in create_task function?
     task_list = SHEET.worksheet('Tasks')
     # Assigning Done worksheet to done_list var
     done_list = SHEET.worksheet('Done')
