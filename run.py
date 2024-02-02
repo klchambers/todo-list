@@ -32,14 +32,14 @@ def app_load():
 
 def display_list():
     """
-    Checks if to do list is empty, if so, asks user to add a task
+    Checks if To Do list is empty, if so, asks user to add a task
     if not empty, prints tasks
     """
     print('Loading your to-do list...')
     clear_terminal()
     todo_list = SHEET.worksheet('Tasks').get_all_values()
     if todo_list == []:
-        print('Your to do list is empty! Add a task.')
+        print('Your To Do list is empty! Add a task.')
         create_task()
     else:
         print('Here are your tasks to complete:')
@@ -92,6 +92,42 @@ def create_task():
     display_list()
 
 
+def delete_task():
+    """
+    Use gspread .find method to match user input to cell, then delete row
+    """
+    clear_terminal()
+    task_list = SHEET.worksheet('Tasks')
+    display_list()
+    find_task = input('Which task would you like to delete? ')
+    try:
+        task_to_delete = task_list.find(find_task)
+        deleting = True
+        while deleting == True:
+            print(f"You are about to delete {task_to_delete}")
+            print("Are you sure?")
+            print("")
+            confirm_deletion = input("Type YES to confirm,\
+ or NO to return to menu (input is case-sensitive): ")
+            
+            if confirm_deletion == 'YES':
+                print(f"Deleting {[task_to_delete]}...")
+                task_list.delete_rows(task_to_delete.row)
+                deleting = False
+                clear_terminal()
+                user_options()
+            elif confirm_deletion == 'NO':
+                deleting = False
+                clear_terminal()
+                user_options()
+            else:
+                print('Invalid choice, please try again')
+    except:
+        pass
+
+
+
+
 def task_done():
     """
     Use gspread .find method to match user input to cell, then move to Done tab
@@ -111,7 +147,7 @@ def task_done():
         # Looks for cell with matching value to find_task,
         # Assign this to the done_task var
         done_task = task_list.find(find_task)
-        # Need to delete task from cell and shift all cells up one here...
+        # Deletes task from Task sheet
         task_list.delete_rows(done_task.row)
         # Adds the completed task to the Done sheet
         done_list.append_row([done_task.value])
@@ -136,9 +172,9 @@ def user_options():
     """
 
     choice = input('''\nWhat would you like to do?\n
-1: Create a new task\n2: View your to do list
+1: Create a new task\n2: View your To Do list
 3: Mark a task as done
-4: Edit a task\n5: View your completed tasks
+4: Delete a task from your To Do list\n5: View your completed tasks
 Or type 'exit' to quit: ''')
     # Checking user input against the listed options
     if choice == str(1):
@@ -155,8 +191,7 @@ Or type 'exit' to quit: ''')
         user_options()
     elif choice == str(4):
         print("")
-        print('I need to make function to edit task...')
-        user_options()
+        delete_task()
     elif choice == str(5):
         print('Loading your completed tasks...')
         display_done_tasks()
