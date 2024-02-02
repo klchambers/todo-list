@@ -67,13 +67,38 @@ Here's your full list: """)
             print(f'\033[1m {task} \033[m')
 
         choice = input('''Enter MENU to return to the \
-main menu, or QUIT to exit: ''')
+main menu, CLEAR to clear your Completed tasks list, or QUIT to exit: ''')
         if choice.lower() == 'menu':
             user_options()
+        elif choice.lower() == 'clear':
+            deleting =  True
+            while deleting == True:
+                print(f"You are about to delete your completed taks")
+                print("Are you sure?")
+                print("")
+                # Confirming user's choice
+                confirm_deletion = input("Type YES to confirm,\
+ or NO to return to main menu (input is case-sensitive): ")
+            # Deleting task row if YES
+            if confirm_deletion == 'YES':
+                print(f"Deleting your completed tasks...")
+                done_list.clear()
+                # Breaks while loop and returns to menu
+                deleting = False
+                clear_terminal()
+                user_options()
+            # Breaks while loop and returns to menu with no data deleted if NO
+            elif confirm_deletion == 'NO':
+                deleting = False
+                clear_terminal()
+                user_options()
+            # While loop remains True and user asked to try again
+            else:
+                print('Invalid choice, please try again')
         elif choice.lower() == 'quit':
             exit()
         else:
-            print('Invalid selection. Please try again, using the Y or N key')
+            print('Invalid selection. Please try again: ')
 
 
 def create_task():
