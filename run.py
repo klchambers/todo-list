@@ -73,9 +73,10 @@ Here's your full list: """)
             print(f'\033[1m {task} \033[m')
         # Gets user choice of what to do next
         choice = input('''Enter MENU to return to the \
-main menu, CLEAR to clear your Completed tasks list, or QUIT to exit: ''')
+main menu, CLEAR to clear your Completed tasks list, or QUIT to exit the app: ''')
         # Reloads main menu
         if choice.lower() == 'menu':
+            clear_terminal()
             user_options()
         # Clears 'Done' worksheet
         elif choice.lower() == 'clear':
@@ -171,8 +172,16 @@ def delete_task():
             else:
                 print('Invalid choice, please try again')
     # except statement will handle error if task matching input not found
-    except:
-        pass
+    except (TypeError, AttributeError) as e:
+        print(f'''\nNo task found matching {find_task}... Please try again, \
+or enter MENU to return to the main menu.\n''')
+        # Convert string to lower in case caps lock is enabled
+        if find_task.lower() == 'menu':
+            # Return user to the menu
+            user_options()
+        else:
+            # Continue to the delete_task function again
+            delete_task()
 
 
 def task_done():
@@ -202,7 +211,7 @@ def task_done():
     # to try again or return to menu
     except (TypeError, AttributeError) as e:
         print(f'''\nNo task found matching {find_task}... Please try again, \
-or enter the MENU to return to the main menu.\n''')
+or enter MENU to return to the main menu.\n''')
         # Convert string to lower in case caps lock is enabled
         if find_task.lower() == 'menu':
             # Return user to the menu
