@@ -80,8 +80,8 @@ main menu, CLEAR to clear your Completed tasks list, or QUIT to exit: ''')
         # Clears 'Done' worksheet
         elif choice.lower() == 'clear':
             # Set condition to True for while loop
-            deleting =  True
-            while deleting == True:
+            deleting = True
+            while deleting is True:
                 print(f"You are about to delete your completed tasks")
                 print("Are you sure?")
                 print("")
@@ -96,13 +96,13 @@ main menu, CLEAR to clear your Completed tasks list, or QUIT to exit: ''')
                     deleting = False
                     clear_terminal()
                     user_options()
-                # Breaks while loop and returns to 
+                # Breaks while loop and returns to
                 # menu with no data deleted if NO
                 elif confirm_deletion == 'NO':
                     deleting = False
                     clear_terminal()
                     user_options()
-                # While loop remains True and user 
+                # While loop remains True and user
                 # asked to try again if anything else entered
                 else:
                     print('Invalid choice, please try again')
@@ -147,7 +147,7 @@ def delete_task():
         deleting = True
         # Keeps deletion in process until valid input has been confirmed
         # or stopped by the user, will repeat if invalid data entered
-        while deleting == True:
+        while deleting is True:
             print(f"You are about to delete {task_to_delete}")
             print("Are you sure?")
             print("")
@@ -173,8 +173,6 @@ def delete_task():
     # except statement will handle error if task matching input not found
     except:
         pass
-
-
 
 
 def task_done():
