@@ -54,23 +54,32 @@ def display_done_tasks():
     Displays tasks on the done worksheet
     """
     print('Loading your completed tasks...')
+    # Clearing terminal
     clear_terminal()
+    # Assigning values to done_list to print to terminal
     done_list = SHEET.worksheet('Done').get_all_values()
+    # Assigning worksheet to done_sheet for gspread .clear() function
+    done_sheet = SHEET.worksheet('Done')
+    # Prints message and loads main menu if no tasks are completed
     if done_list == []:
         print('You have no completed tasks!\n')
         print('Loading main menu...\n')
         user_options()
+    # Prints # of tasks in Done sheet and lists them in bold
     else:
         print(f"""Well done! You've completed {len(done_list)} tasks.
 Here's your full list: """)
         for task in list(done_list):
             print(f'\033[1m {task} \033[m')
-
+        # Gets user choice of what to do next
         choice = input('''Enter MENU to return to the \
 main menu, CLEAR to clear your Completed tasks list, or QUIT to exit: ''')
+        # Reloads main menu
         if choice.lower() == 'menu':
             user_options()
+        # Clears 'Done' worksheet
         elif choice.lower() == 'clear':
+            # Set condition to True for while loop
             deleting =  True
             while deleting == True:
                 print(f"You are about to delete your completed tasks")
@@ -79,22 +88,25 @@ main menu, CLEAR to clear your Completed tasks list, or QUIT to exit: ''')
                 # Confirming user's choice
                 confirm_deletion = input("Type YES to confirm,\
  or NO to return to main menu (input is case-sensitive): ")
-                # Deleting task row if YES
+                # Deleting all data from sheet if YES
                 if confirm_deletion == 'YES':
                     print(f"Deleting your completed tasks...")
-                    done_list.clear()
+                    done_sheet.clear()
                     # Breaks while loop and returns to menu
                     deleting = False
                     clear_terminal()
                     user_options()
-                # Breaks while loop and returns to menu with no data deleted if NO
+                # Breaks while loop and returns to 
+                # menu with no data deleted if NO
                 elif confirm_deletion == 'NO':
                     deleting = False
                     clear_terminal()
                     user_options()
-                # While loop remains True and user asked to try again
+                # While loop remains True and user 
+                # asked to try again if anything else entered
                 else:
                     print('Invalid choice, please try again')
+        # Program exit if user chooses 'quit'
         elif choice.lower() == 'quit':
             exit()
         else:
