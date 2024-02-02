@@ -39,8 +39,15 @@ def display_list():
     clear_terminal()
     todo_list = SHEET.worksheet('Tasks').get_all_values()
     if todo_list == []:
-        print('Your To Do list is empty! Add a task.')
-        create_task()
+        choice = input("""Your To Do list is empty!\
+Would you like to add a task?\n Enter YES to create a task,\
+ or press any key to return to menu: """)
+        if choice.lower() == 'yes':
+            clear_terminal()
+            create_task()
+        else:
+            clear_terminal()
+            user_options()
     else:
         print('Here are your tasks to complete:')
         for task in list(todo_list):
