@@ -116,6 +116,7 @@ main menu, CLEAR to clear your Completed tasks list, or QUIT to exit the app: ''
                     print('Invalid choice, please try again')
         # Program exit if user chooses 'quit'
         elif choice.lower() == 'quit':
+            clear_terminal()
             exit()
         else:
             print('Invalid selection. Please try again: ')
@@ -258,6 +259,7 @@ Or type 'exit' to quit: ''')
         print('Loading your completed tasks...')
         display_done_tasks()
     elif choice.lower() == 'exit':
+        clear_terminal()
         exit()
     # Tell user if their choice is not valid
     # and runs the options menu again
