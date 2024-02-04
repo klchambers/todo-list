@@ -87,7 +87,8 @@ Here's your full list: """)
             print(f'\033[1m • {task[0]} \033[m')
         # Gets user choice of what to do next
         choice = input('''Enter MENU to return to the \
-main menu, CLEAR to clear your Completed tasks list, or QUIT to exit the app: ''')
+main menu, CLEAR to clear your Completed tasks list, \
+or QUIT to exit the app: ''')
         # Reloads main menu
         if choice.lower() == 'menu':
             clear_terminal()
