@@ -6,7 +6,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
-    ]
+]
 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -23,10 +23,12 @@ def clear_terminal():
 
 def app_load():
     """
-    Prints welcome message to user on app load and runs user_options function
+    Clears screen & prints welcome message to user on app load
+    before running user_options function
     """
     clear_terminal()
     print('\nWelcome to your to-do list')
+    # Printing options menu to user
     user_options()
 
 
@@ -37,14 +39,18 @@ def display_list():
     """
     print('Loading your to-do list...')
     clear_terminal()
+    # Assigning tasks worksheet to todo_list variable
     todo_list = SHEET.worksheet('Tasks').get_all_values()
+    # Checking if Tasks list has to do items
     if todo_list == [[]]:
         choice = input("""Your To Do list is empty! \
 Would you like to add a task?\nEnter YES to create a task,\
  or press any key to return to menu: """)
+        # Clearing terminal and running create_task function
         if choice.lower() == 'yes':
             clear_terminal()
             create_task()
+        # Clearing terminal and taking user to options menu
         else:
             clear_terminal()
             user_options()
@@ -53,6 +59,7 @@ Would you like to add a task?\nEnter YES to create a task,\
         for task in list(todo_list):
             # after escape character 033[1m sets text weight to bold,
             # 033[0m after task resets to default
+            # [0] index ensures that task value is printed rather than object
             print(f'\033[1m • {task[0]} \033[m')
 
 
@@ -128,6 +135,7 @@ def create_task():
     """
     print('Loading create task function...')
     clear_terminal()
+    # Assigning user input to task variable, to be appended to Task sheet
     task = input('Enter your todo: ')
     # Assigning tasks worksheet to task_sheet variable
     task_list = SHEET.worksheet('Tasks')
