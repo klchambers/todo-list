@@ -38,7 +38,7 @@ def display_list():
     print('Loading your to-do list...')
     clear_terminal()
     todo_list = SHEET.worksheet('Tasks').get_all_values()
-    if todo_list == []:
+    if todo_list == [[]]:
         choice = input("""Your To Do list is empty! \
 Would you like to add a task?\nEnter YES to create a task,\
  or press any key to return to menu: """)
@@ -68,7 +68,7 @@ def display_done_tasks():
     # Assigning worksheet to done_sheet for gspread .clear() function
     done_sheet = SHEET.worksheet('Done')
     # Prints message and loads main menu if no tasks are completed
-    if done_list == []:
+    if done_list == [[]]:
         print('You have no completed tasks!\n')
         print('Loading main menu...\n')
         user_options()
