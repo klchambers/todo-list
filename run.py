@@ -98,7 +98,7 @@ or QUIT to exit the app: ''')
             # Set condition to True for while loop
             deleting = True
             while deleting is True:
-                print(f"You are about to delete your completed tasks")
+                print("You are about to delete your completed tasks")
                 print("Are you sure?")
                 print("")
                 # Confirming user's choice
@@ -106,7 +106,7 @@ or QUIT to exit the app: ''')
  or NO to return to main menu (input is case-sensitive): ")
                 # Deleting all data from sheet if YES
                 if confirm_deletion == 'YES':
-                    print(f"Deleting your completed tasks...")
+                    print("Deleting your completed tasks...")
                     done_sheet.clear()
                     # Breaks while loop and returns to menu
                     deleting = False
@@ -190,8 +190,9 @@ def delete_task():
                 print('Invalid choice, please try again')
     # except statement will handle error if task matching input not found
     except (TypeError, AttributeError) as e:
-        print(f'''\nNo task found matching {find_task}... Please try again, \
-or enter MENU to return to the main menu.\n''')
+        print(f'''\n{e} error. No task found matching
+ {find_task}... Please try again, or enter \
+MENU to return to the main menu.\n''')
         # Convert string to lower in case caps lock is enabled
         if find_task.lower() == 'menu':
             # Return user to the menu
@@ -227,8 +228,9 @@ def task_done():
     # If no matching task is found, user given choice
     # to try again or return to menu
     except (TypeError, AttributeError) as e:
-        print(f'''\nNo task found matching {find_task}... Please try again, \
-or enter MENU to return to the main menu.\n''')
+        print(f'''\n{e} error. No task found matching \
+{find_task}... Please try again, or enter MENU \
+to return to the main menu.\n''')
         # Convert string to lower in case caps lock is enabled
         if find_task.lower() == 'menu':
             # Return user to the menu
