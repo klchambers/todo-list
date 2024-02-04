@@ -53,7 +53,7 @@ Would you like to add a task?\nEnter YES to create a task,\
         for task in list(todo_list):
             # after escape character 033[1m sets text weight to bold,
             # 033[0m after task resets to default
-            print(f'\033[1m {task} \033[m')
+            print(f'\033[1m • {task[0]} \033[m')
 
 
 def display_done_tasks():
@@ -77,7 +77,7 @@ def display_done_tasks():
         print(f"""Well done! You've completed {len(done_list)} tasks.
 Here's your full list: """)
         for task in list(done_list):
-            print(f'\033[1m {task} \033[m')
+            print(f'\033[1m • {task[0]} \033[m')
         # Gets user choice of what to do next
         choice = input('''Enter MENU to return to the \
 main menu, CLEAR to clear your Completed tasks list, or QUIT to exit the app: ''')
@@ -156,7 +156,7 @@ def delete_task():
         # Keeps deletion in process until valid input has been confirmed
         # or stopped by the user, will repeat if invalid data entered
         while deleting is True:
-            print(f"You are about to delete {task_to_delete}")
+            print(f"You are about to delete {task_to_delete.value}")
             print("Are you sure?")
             print("")
             # Confirming user's choice
@@ -164,7 +164,7 @@ def delete_task():
  or NO to return to menu (input is case-sensitive): ")
             # Deleting task row if YES
             if confirm_deletion == 'YES':
-                print(f"Deleting {[task_to_delete]}...")
+                print(f"Deleting {task_to_delete.value}...")
                 task_list.delete_rows(task_to_delete.row)
                 # Breaks while loop and returns to menu
                 deleting = False
