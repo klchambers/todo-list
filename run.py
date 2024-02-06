@@ -140,6 +140,13 @@ def create_task():
     date_created = date.today().strftime('%b %d, %Y')
     # Assigning user input to task variable, to be appended to Task sheet
     task = input('Enter your todo: ')
+    # Declaring a list of critical keywords that shouldn't be entered
+    # as task names
+    important_keywords = ['quit', 'menu', 'yes', 'no']
+    if any(keyword in task.lower() for keyword in important_keywords):
+        print(f'You cannot create a task called {task}...')
+        input("Press enter to try again.")
+        create_task()
     # Assigning tasks worksheet to task_sheet variable
     task_list = SHEET.worksheet('Tasks')
     # Appending the task to the worksheet row
