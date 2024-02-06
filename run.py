@@ -27,7 +27,7 @@ def app_load():
     before running user_options function
     """
     clear_terminal()
-    print('\nWelcome to your to-do list')
+    print('\nWelcome to your to-do list\n')
     # Printing options menu to user
     user_options()
 
@@ -37,8 +37,7 @@ def display_list():
     Checks if To Do list is empty, if so, asks user to add a task
     if not empty, prints tasks
     """
-    print('Loading your to-do list...')
-    clear_terminal()
+
     # Assigning tasks worksheet to todo_list variable
     todo_list = SHEET.worksheet('Tasks').get_all_values()
     # Checking if Tasks list has to do items
@@ -151,13 +150,16 @@ def delete_task():
     """
     Use gspread .find method to match user input to cell, then delete row
     """
-    clear_terminal()
+
     # Assigning Tasks worksheet to variable
     task_list = SHEET.worksheet('Tasks')
     # Displaying To Do list to user
     display_list()
     # Adding user's task to delete to find_task variable
-    find_task = input('Which task would you like to delete? ')
+    find_task = input("""Which task would you like to delete?
+Enter 'MENU' to return to options menu: """)
+    if find_task.lower() == 'menu':
+        app_load()
     try:
         # Finding task and assigning to var
         task_to_delete = task_list.find(find_task)
@@ -178,25 +180,28 @@ def delete_task():
                 task_list.delete_rows(task_to_delete.row)
                 # Breaks while loop and returns to menu
                 deleting = False
-                clear_terminal()
-                user_options()
+                app_load()
             # Breaks while loop and returns to menu with no data deleted if NO
             elif confirm_deletion == 'NO':
                 deleting = False
-                clear_terminal()
-                user_options()
+                # clear_terminal()
+                app_load()
             # While loop remains True and user asked to try again
             else:
                 print('Invalid choice, please try again')
     # except statement will handle error if task matching input not found
-    except (TypeError, AttributeError) as e:
-        print(f'''\n{e} error. No task found matching
- {find_task}... Please try again, or enter \
+    except (TypeError, AttributeError):
+        print(f'''\nNo task found matching\
+ '{find_task}'... Please try again, or enter \
 MENU to return to the main menu.\n''')
+        """
+        Redundant due to addition of similar if find_task comparison above?
+        Maybe delete this
+        """
         # Convert string to lower in case caps lock is enabled
         if find_task.lower() == 'menu':
             # Return user to the menu
-            user_options()
+            app_load()
         else:
             # Continue to the delete_task function again
             delete_task()
@@ -206,7 +211,7 @@ def task_done():
     """
     Use gspread .find method to match user input to cell, then move to Done tab
     """
-    clear_terminal()
+    # clear_terminal()
     task_list = SHEET.worksheet('Tasks')
     # Assigning Done worksheet to done_list var
     done_list = SHEET.worksheet('Done')
@@ -227,14 +232,12 @@ def task_done():
 
     # If no matching task is found, user given choice
     # to try again or return to menu
-    except (TypeError, AttributeError) as e:
-        print(f'''\n{e} error. No task found matching \
-{find_task}... Please try again, or enter MENU \
-to return to the main menu.\n''')
+    except (TypeError, AttributeError):
+        print(f'\nNo task found matching {find_task}... Please try again.\n')
         # Convert string to lower in case caps lock is enabled
         if find_task.lower() == 'menu':
             # Return user to the menu
-            user_options()
+            app_load()
         else:
             # Continue to the task_done function again
             task_done()
@@ -244,29 +247,34 @@ def user_options():
     """
     Uses if/else to take user input and run corresponding function
     """
-
+    todo_list = SHEET.worksheet('Tasks').get_all_values()
+    # Checking if Tasks list has to do items
+    if todo_list == [[]]:
+        print('Your To Do list is empty!')
+    else:
+        print('Here are your tasks to complete:')
+        for task in list(todo_list):
+            # after escape character 033[1m sets text weight to bold,
+            # 033[0m after task resets to default
+            # [0] index ensures that task value is printed rather than object
+            print(f'\033[1m • {task[0]} \033[m')
     choice = input('''\nWhat would you like to do?\n
-1: Create a new task\n2: View your To Do list
-3: Mark a task as done
-4: Delete a task from your To Do list\n5: View your completed tasks
+1: Create a new task\n2: Mark a task as done
+3: Delete a task from your To Do list\n4: View your completed tasks\n
 Or type 'exit' to quit: ''')
     # Checking user input against the listed options
     if choice == str(1):
         print("")
         create_task()
-        user_options()
+        app_load()
     elif choice == str(2):
         print("")
-        display_list()
-        user_options()
+        task_done()
+        app_load()
     elif choice == str(3):
         print("")
-        task_done()
-        user_options()
-    elif choice == str(4):
-        print("")
         delete_task()
-    elif choice == str(5):
+    elif choice == str(4):
         print('Loading your completed tasks...')
         display_done_tasks()
     elif choice.lower() == 'exit':
@@ -276,7 +284,7 @@ Or type 'exit' to quit: ''')
     # and runs the options menu again
     else:
         print('\nInvalid selection, please try again.\n')
-        user_options()
+        app_load()
 
 
 def main():
