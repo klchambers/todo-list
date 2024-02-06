@@ -116,14 +116,20 @@
 
 ## Technologies Used
 
-- Visual Studio Code: Code editing
+- [Visual Studio Code](https://code.visualstudio.com/): Code editing
 - [GitHub](https://github.com/): Source control
 - [Heroku](https://www.heroku.com): Live deployment of site
 - [Code Institute PEP8 Linter](https://pep8ci.herokuapp.com/): Python code analysis tool
+- [datetime Python module](https://docs.python.org/3/library/datetime.html): used to input date data into spreadsheet
+- [Google Sheets](https://www.google.com/sheets/about/): Cloud-based spreadsheet editor used to store data
+- [gspread API](https://docs.gspread.org/en/latest/): Python API for Google Sheets, used to access spreadsheets, provide access to run.py, and read, write and format cells
+- [Google Drive API](https://developers.google.com/drive/api/guides/about-sdk): REST API, credentials, and authorisation
 
 <a id=acknowledgements></a>
 
 ## Acknowledgements
+
+Date formatting using `strftime()` method adapted from an example posted by [NPE](https://stackoverflow.com/users/367273/npe) in [this](https://stackoverflow.com/questions/6288892/python-how-to-convert-datetime-format) Stack Overflow thread.
 
 ANSI character methods to print bold text in the terminal adapted from examples posted by [Peter Mortensen](https://stackoverflow.com/users/63550/peter-mortensen) and [Bacara](https://stackoverflow.com/users/1770999/bacara) in [this](https://stackoverflow.com/questions/8924173/how-can-i-print-bold-text-in-python#:~:text=In%20Python%2C%20escape%20sequences%20are,want%20to%20represent%20in%20bold.) Stack Overflow thread.
 
