@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import os
+from datetime import date
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -135,12 +136,14 @@ def create_task():
     """
     print('Loading create task function...')
     clear_terminal()
+    # Assigns the current date to date_created variable
+    date_created = date.today()
     # Assigning user input to task variable, to be appended to Task sheet
     task = input('Enter your todo: ')
     # Assigning tasks worksheet to task_sheet variable
     task_list = SHEET.worksheet('Tasks')
     # Appending the task to the worksheet row
-    task_list.append_row([task])
+    task_list.append_row([task, str(date_created)])
     print('\nAdding your new task...')
     # Showing the updated list to the user
     user_options()
