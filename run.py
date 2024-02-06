@@ -151,6 +151,7 @@ def create_task():
     task_list = SHEET.worksheet('Tasks')
     # Appending the task to the worksheet row
     task_list.append_row([task, str(date_created)])
+    # Visual feedback confirming to the user that their action is in progress
     print('\nAdding your new task...')
     # Showing the updated list to the user
     user_options()
@@ -160,7 +161,6 @@ def delete_task():
     """
     Use gspread .find method to match user input to cell, then delete row
     """
-
     # Assigning Tasks worksheet to variable
     task_list = SHEET.worksheet('Tasks')
     # Displaying To Do list to user
@@ -168,6 +168,8 @@ def delete_task():
     # Adding user's task to delete to find_task variable
     find_task = input("""Which task would you like to delete?
 Alternatively, Enter 'MENU' to return to options menu: """)
+    # Checking if input is equal to 'menu'
+    # .lower() used in case user capitalises any letter
     if find_task.lower() == 'menu':
         app_load()
     try:
@@ -234,6 +236,7 @@ Alternatively, Enter 'MENU' to return to options menu: """)
         task_list.delete_rows(done_task.row)
         # Adds the completed task to the Done sheet
         done_list.append_row([done_task.value, str(date_completed)])
+        # Clears terminal and reloads app menu display
         clear_terminal()
         app_load()
 
