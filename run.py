@@ -28,7 +28,14 @@ def app_load():
     before running user_options function
     """
     clear_terminal()
-    print('\nWelcome to your to-do list\n')
+    print(r"""
+ _____      ______        _     _     _   _
+|_   _|     |  _  \      | |   (_)   | | | |
+  | | ___   | | | |___   | |    _ ___| |_| |
+  | |/ _ \  | | | / _ \  | |   | / __| __| |
+  | | (_) | | |/ / (_) | | |___| \__ \ |_|_|
+  \_/\___/  |___/ \___/  \_____/_|___/\__(_)
+""")
     # Printing options menu to user
     user_options()
 
@@ -43,7 +50,7 @@ def display_list():
     todo_list = SHEET.worksheet('Tasks').get_all_values()
     # Checking if Tasks list has to do items
     if todo_list == [[]]:
-        choice = input("""Your To Do list is empty! \
+        choice = input("""\nYour To Do list is empty! \
 Would you like to add a task?\nEnter YES to create a task,\
  or press any key to return to menu: """)
         # Clearing terminal and running create_task function
