@@ -142,7 +142,7 @@ def create_task():
     task = input('Enter your todo: ')
     # Declaring a list of critical keywords that shouldn't be entered
     # as task names
-    important_keywords = ['quit', 'menu', 'yes', 'no']
+    important_keywords = ['quit', 'menu', 'clear', 'yes', 'no']
     if any(keyword in task.lower() for keyword in important_keywords):
         print(f'You cannot create a task called {task}...')
         input("Press enter to try again.")
