@@ -273,7 +273,8 @@ Or type 'exit' to quit: ''')
     # Tell user if their choice is not valid
     # and runs the options menu again
     else:
-        print('\nInvalid selection, please try again.\n')
+        print('\nInvalid selection.\n')
+        input('Press Enter to continue')
         app_load()
 
 
