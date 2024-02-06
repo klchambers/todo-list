@@ -85,9 +85,9 @@ Here's your full list: """)
         for task in list(done_list):
             print(f'\033[1m • {task[0]} \033[m')
         # Gets user choice of what to do next
-        choice = input('''Enter MENU to return to the \
-main menu, CLEAR to clear your Completed tasks list, \
-or QUIT to exit the app: ''')
+        choice = input('''Enter 'menu' to return to the \
+main menu, 'clear' to clear your Completed tasks list, \
+or 'quit' to exit the app: ''')
         # Reloads main menu
         if choice.lower() == 'menu':
             clear_terminal()
@@ -143,7 +143,7 @@ def create_task():
     task_list.append_row([task])
     print('\nAdding your new task...')
     # Showing the updated list to the user
-    display_list()
+    user_options()
 
 
 def delete_task():
@@ -168,7 +168,8 @@ Enter 'MENU' to return to options menu: """)
         # Keeps deletion in process until valid input has been confirmed
         # or stopped by the user, will repeat if invalid data entered
         while deleting is True:
-            print(f"You are about to delete {task_to_delete.value}")
+            print(f"You are about to delete the task: \
+'{task_to_delete.value}'")
             print("Are you sure?")
             print("")
             # Confirming user's choice
@@ -229,6 +230,8 @@ def task_done():
         task_list.delete_rows(done_task.row)
         # Adds the completed task to the Done sheet
         done_list.append_row([done_task.value])
+        clear_terminal()
+        app_load()
 
     # If no matching task is found, user given choice
     # to try again or return to menu
@@ -250,7 +253,8 @@ def user_options():
     todo_list = SHEET.worksheet('Tasks').get_all_values()
     # Checking if Tasks list has to do items
     if todo_list == [[]]:
-        print('Your To Do list is empty!')
+        # If empty, prints the following in bold
+        print('\033[1mYour To Do list is empty!\033[0m')
     else:
         print('Here are your tasks to complete:')
         for task in list(todo_list):
@@ -270,7 +274,6 @@ Or type 'exit' to quit: ''')
     elif choice == str(2):
         print("")
         task_done()
-        app_load()
     elif choice == str(3):
         print("")
         delete_task()
