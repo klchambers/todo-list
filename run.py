@@ -60,7 +60,7 @@ Would you like to add a task?\nEnter YES to create a task,\
             # after escape character 033[1m sets text weight to bold,
             # 033[0m after task resets to default
             # [0] index ensures that task value is printed rather than object
-            print(f'\033[1m • {task[0]} \033[m')
+            print(f'\033[1m • {task[0]} (created on {task[1]})\033[m')
 
 
 def display_done_tasks():
