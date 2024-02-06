@@ -251,7 +251,7 @@ def user_options():
             # after escape character 033[1m sets text weight to bold,
             # 033[0m after task resets to default
             # [0] index ensures that task value is printed rather than object
-            print(f'\033[1m • {task[0]} \033[m')
+            print(f'\033[1m • {task[0]} (created on {task[1]})\033[m')
     choice = input('''\nWhat would you like to do?\n
 1: Create a new task\n2: Mark a task as done
 3: Delete a task from your To Do list\n4: View your completed tasks\n
