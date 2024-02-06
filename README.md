@@ -38,19 +38,27 @@
 
 ### User Goals
 
-
+- I would like to store To Do list data, check off tasks when I complete them, and view and delete a list of completed tasks
+- I would like the app to record the date that I create tasks and complete them, for later reference
+- I would like the app to display my To Do list in a user-friendly, readable manner
+- I would like the data to be persistent, saving to a database so I can view it later, even after closing the program
 
 <a id=user-stories></a>
 
 ### User Stories
 
-
+- The app should be intuitive, and display actionable and informative data
+- The app should be responsive to my input, and inform me if I make any mistakes or input any invalid data
+- The app should store my data, and use persistent storage allow me to view it at a later date after closing the app
+- The app should clear the terminal display appropriately after certain actions, such as when I close the program, delete data, or clear a list
 
 <a id=site-owners-goals></a>
 
 ### Site Owner's Goals
 
-
+- I aim to create a useful program through which data can be stored with relevant contextual information, such as dates and priorities/importance
+- I aim to create a program which a user can quit, and come back to at a later date, maintaining its functionality
+- I aim to implement defensive design in the program, so that exceptions and errors are caught and handled well, with as little inconvenience to the user as possible
 
 <a id=features></a>
 
@@ -133,7 +141,7 @@ Date formatting using `strftime()` method adapted from an example posted by [NPE
 
 ANSI character methods to print bold text in the terminal adapted from examples posted by [Peter Mortensen](https://stackoverflow.com/users/63550/peter-mortensen) and [Bacara](https://stackoverflow.com/users/1770999/bacara) in [this](https://stackoverflow.com/questions/8924173/how-can-i-print-bold-text-in-python#:~:text=In%20Python%2C%20escape%20sequences%20are,want%20to%20represent%20in%20bold.) Stack Overflow thread.
 
-[This](https://patorjk.com/software/taag) text to ASCII art generator on [patrorjk.com](https://patorjk.com/) was used to generate the ASCII art displayed on app load.
+[This](https://patorjk.com/software/taag) text to ASCII art generator by Patrick Gillespie on [patrorjk.com](https://patorjk.com/) was used to generate the ASCII art displayed on app load.
 
 Course content from Code Institute's Diploma in Full Stack Software Development has been useful and in teaching programming concepts and Python methods.
 
