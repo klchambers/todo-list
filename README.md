@@ -133,6 +133,8 @@ Date formatting using `strftime()` method adapted from an example posted by [NPE
 
 ANSI character methods to print bold text in the terminal adapted from examples posted by [Peter Mortensen](https://stackoverflow.com/users/63550/peter-mortensen) and [Bacara](https://stackoverflow.com/users/1770999/bacara) in [this](https://stackoverflow.com/questions/8924173/how-can-i-print-bold-text-in-python#:~:text=In%20Python%2C%20escape%20sequences%20are,want%20to%20represent%20in%20bold.) Stack Overflow thread.
 
+[This](https://patorjk.com/software/taag) text to ASCII art generator on [patrorjk.com](https://patorjk.com/) was used to generate the ASCII art displayed on app load.
+
 Course content from Code Institute's Diploma in Full Stack Software Development has been useful and in teaching programming concepts and Python methods.
 
 Guidance from Code Institute mentor Brian O'Hare has been invaluable throughout stages of this project's inception and development.
