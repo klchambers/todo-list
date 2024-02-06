@@ -137,7 +137,7 @@ def create_task():
     print('Loading create task function...')
     clear_terminal()
     # Assigns the current date to date_created variable
-    date_created = date.today()
+    date_created = date.today().strftime('%b %d, %Y')
     # Assigning user input to task variable, to be appended to Task sheet
     task = input('Enter your todo: ')
     # Assigning tasks worksheet to task_sheet variable
