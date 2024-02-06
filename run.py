@@ -157,7 +157,7 @@ def delete_task():
     display_list()
     # Adding user's task to delete to find_task variable
     find_task = input("""Which task would you like to delete?
-Enter 'MENU' to return to options menu: """)
+Alternatively, Enter 'MENU' to return to options menu: """)
     if find_task.lower() == 'menu':
         app_load()
     try:
@@ -193,19 +193,9 @@ Enter 'MENU' to return to options menu: """)
     # except statement will handle error if task matching input not found
     except (TypeError, AttributeError):
         print(f'''\nNo task found matching\
- '{find_task}'... Please try again, or enter \
-MENU to return to the main menu.\n''')
-        """
-        Redundant due to addition of similar if find_task comparison above?
-        Maybe delete this
-        """
-        # Convert string to lower in case caps lock is enabled
-        if find_task.lower() == 'menu':
-            # Return user to the menu
-            app_load()
-        else:
-            # Continue to the delete_task function again
-            delete_task()
+ '{find_task}'... Please try again.\n''')
+        # Continue to the delete_task function again
+        delete_task()
 
 
 def task_done():
@@ -220,8 +210,10 @@ def task_done():
     display_list()
     # Asks user which task they have completed
     # This gets assigned to find_task
-    find_task = input("Which task have you completed? ")
-
+    find_task = input("""Which task have you completed?
+Alternatively, Enter 'MENU' to return to options menu: """)
+    if find_task.lower() == 'menu':
+        app_load()
     try:
         # Looks for cell with matching value to find_task,
         # Assign this to the done_task var
@@ -238,12 +230,7 @@ def task_done():
     except (TypeError, AttributeError):
         print(f'\nNo task found matching {find_task}... Please try again.\n')
         # Convert string to lower in case caps lock is enabled
-        if find_task.lower() == 'menu':
-            # Return user to the menu
-            app_load()
-        else:
-            # Continue to the task_done function again
-            task_done()
+        task_done()
 
 
 def user_options():
@@ -278,7 +265,7 @@ Or type 'exit' to quit: ''')
         print("")
         delete_task()
     elif choice == str(4):
-        print('Loading your completed tasks...')
+        print("")
         display_done_tasks()
     elif choice.lower() == 'exit':
         clear_terminal()
