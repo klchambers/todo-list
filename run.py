@@ -84,7 +84,7 @@ def display_done_tasks():
         print(f"""Well done! You've completed {len(done_list)} tasks.
 Here's your full list: """)
         for task in list(done_list):
-            print(f'\033[1m • {task[0]} \033[m')
+            print(f'\033[1m • {task[0]} (completed on {task[1]}) \033[m')
         # Gets user choice of what to do next
         choice = input('''Enter 'menu' to return to the \
 main menu, 'clear' to clear your Completed tasks list, \
@@ -216,6 +216,8 @@ def task_done():
     task_list = SHEET.worksheet('Tasks')
     # Assigning Done worksheet to done_list var
     done_list = SHEET.worksheet('Done')
+    # Assigning completed date to be appended to second column
+    date_completed = date.today().strftime('%b %d, %Y')
     # Shows users tasks on their list
     display_list()
     # Asks user which task they have completed
@@ -231,7 +233,7 @@ Alternatively, Enter 'MENU' to return to options menu: """)
         # Deletes task from Task sheet
         task_list.delete_rows(done_task.row)
         # Adds the completed task to the Done sheet
-        done_list.append_row([done_task.value])
+        done_list.append_row([done_task.value, str(date_completed)])
         clear_terminal()
         app_load()
 
