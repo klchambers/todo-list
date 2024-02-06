@@ -1,3 +1,5 @@
+![To Do List app ASCII art](documentation/toDoListASCIIArt.png)
+
 **Table of contents:**
 
 - [Introduction](#introduction)
@@ -39,8 +41,8 @@
 ### User Goals
 
 - I would like to store To Do list data, check off tasks when I complete them, and view and delete a list of completed tasks
-- I would like the app to record the date that I create tasks and complete them, for later reference
-- I would like the app to display my To Do list in a user-friendly, readable manner
+- I would like the app to record the date that I create and complete tasks, for later reference
+- I would like the app to display my To Do list in a user-friendly, readable format
 - I would like the data to be persistent, saving to a database so I can view it later, even after closing the program
 
 <a id=user-stories></a>
@@ -49,15 +51,15 @@
 
 - The app should be intuitive, and display actionable and informative data
 - The app should be responsive to my input, and inform me if I make any mistakes or input any invalid data
-- The app should store my data, and use persistent storage allow me to view it at a later date after closing the app
-- The app should clear the terminal display appropriately after certain actions, such as when I close the program, delete data, or clear a list
+- The app should store my data, and use persistent storage to allow me to view it at a later date after closing the app
+- The app should clear the terminal display appropriately after certain actions, such as when I delete data, clear a list, or exit the program
 
 <a id=site-owners-goals></a>
 
 ### Site Owner's Goals
 
 - I aim to create a useful program through which data can be stored with relevant contextual information, such as dates and priorities/importance
-- I aim to create a program which a user can quit, and come back to at a later date, maintaining its functionality
+- I aim to create a program which a user can quit, and come back to at a later date
 - I aim to implement defensive design in the program, so that exceptions and errors are caught and handled well, with as little inconvenience to the user as possible
 
 <a id=features></a>
