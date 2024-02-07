@@ -134,7 +134,8 @@ or 'quit' to exit the app: ''')
             clear_terminal()
             exit()
         else:
-            print('Invalid selection. Please try again: ')
+            input('Invalid selection. Press any key to continue: ')
+            display_done_tasks()
 
 
 def create_task():
