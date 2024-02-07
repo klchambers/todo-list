@@ -151,7 +151,7 @@ def create_task():
     # Declaring a list of critical keywords that shouldn't be entered
     # as task names
     important_keywords = ['quit', 'menu', 'clear', 'yes', 'no']
-    if any(keyword in task.lower() for keyword in important_keywords):
+    if any(keyword in task.strip().lower() for keyword in important_keywords):
         print(f'You cannot create a task called {task}...')
         input("Press enter to try again.")
         create_task()
