@@ -9,6 +9,10 @@
   - [User Stories](#user-stories)
   - [Site Owner's Goals](#site-owners-goals)
 - [Features](#features)
+  - [Main Menu](#main-menu)
+  - [Creating a Task](#creating-a-task)
+  - [Marking Tasks as Done](#marking-tasks-as-done)
+  - [Completed Tasks List](#completed-tasks-list)
   - [Data Model](#data-model)
 - [Testing and Validation](#testing-and-validation)
   - [Testing Methodology](#testing-methodology)
@@ -65,6 +69,30 @@ The program has been deployed to Heroku and can be accessed [here](https://pp3to
 <a id=features></a>
 
 ## Features
+
+
+
+<a id=main-menu></a>
+
+### Main menu
+
+
+
+<a id=creating-a-task></a>
+
+### Creating a Task
+
+
+
+<a id=marking-tasks-as-done></a>
+
+### Marking Tasks as Done
+
+
+
+<a id=completed-tasks-list></a>
+
+### Completed Tasks List
 
 
 
