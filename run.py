@@ -62,12 +62,11 @@ Would you like to add a task?\nEnter YES to create a task,\
             clear_terminal()
             user_options()
     else:
-        print('Here are your tasks to complete:')
-        for task in list(todo_list):
+        for index, task in enumerate(todo_list, 1):
             # after escape character 033[1m sets text weight to bold,
             # 033[0m after task resets to default
             # [0] index ensures that task value is printed rather than object
-            print(f'\033[1m • {task[0]} (created on {task[1]})\033[m')
+            print(f'{index}\033[1m {task[0]} (created on {task[1]})\033[m')
 
 
 def display_done_tasks():
