@@ -92,8 +92,8 @@ Here's your full list: """)
         for task in list(done_list):
             print(f'\033[1m • {task[0]} (completed on {task[1]}) \033[m')
         # Gets user choice of what to do next
-        choice = input('''Enter 'menu' to return to the \
-main menu, 'clear' to clear your Completed tasks list, \
+        choice = input('''Enter 'menu' to return to the main menu,
+'clear' to clear your Completed tasks list,
 or 'quit' to exit the app: ''')
         # Reloads main menu
         if choice.lower() == 'menu':
@@ -146,7 +146,7 @@ def create_task():
     # Assigns the current date to date_created variable
     date_created = date.today().strftime('%b %d, %Y')
     # Assigning user input to task variable, to be appended to Task sheet
-    task = input('Enter your todo: ')
+    task = input('Enter your new task: ')
     # Declaring a list of critical keywords that shouldn't be entered
     # as task names
     important_keywords = ['quit', 'menu', 'clear', 'yes', 'no']
@@ -191,6 +191,7 @@ Alternatively, Enter 'MENU' to return to options menu: """)
         if confirm_deletion == "YES":
             # Adding 1 to target correct row, and to prevent deleting row 0
             task_list.delete_rows(task_index + 1)
+            app_load()
         else:
             app_load()
     except ValueError:
