@@ -151,6 +151,19 @@ Once cleared, all data is removed from the 'Done' worksheet and the user is take
 
 ### Data Model
 
+#### Tasks Worksheet
+
+The core of the application revolves around managing tasks. These tasks are stored in a worksheet named "Tasks" within a Google Sheets document. Each task is represented as a row in the worksheet, with the following structure:
+
+1. **Task Name**: The description of the task entered by the user.
+2. **Date Created**: The date when the task was created. This field is automatically populated with the current date when a new task is added.
+
+#### Done Worksheet
+
+Tasks that have been completed are moved from the "Tasks" worksheet to the "Done" worksheet. This allows users to track their completed tasks separately. The "Done" worksheet has the same structure as the "Tasks" worksheet:
+
+1. **Task Name**: The description of the completed task.
+2. **Date Completed**: The date when the task was marked as completed. Similar to the "Date Created" field, this is automatically populated when a task is moved to the "Done" list.
 
 
 <a id=testing-and-validation></a>
