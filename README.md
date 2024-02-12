@@ -5,6 +5,7 @@
 - [Introduction](#introduction)
 - [Deployed Site](#deployed-site)
 - [User Experience](#user-experience)
+  - [Workflow Logic Charts](#workflow-logic-charts)
   - [User Goals](#user-goals)
   - [User Stories](#user-stories)
   - [Site Owner's Goals](#site-owners-goals)
@@ -41,14 +42,34 @@ The program has been deployed to Heroku and can be accessed [here](https://pp3to
 
 ## User Experience
 
-### Workflow
+<a id="workflow-logic-charts"></a>
 
+### Workflow Logic Charts
 
+![Application flow diagram](/documentation/finalPP3Flowchart.png)
 
-![Application flow diagram](/documentation/finalPP3Flowchart.pdf)
+<details><summary>Draft Application Logic flowchart</summary>
+<img src="documentation/draftPP3Flowchart.png">
 
-<details><summary>Project inception application flow</summary>
-<img src="documentation/draftPP3Flowchart.pdf"></details>
+A number of changes were made to the original logic shown in the above flowchart, created during the project's inception.
+
+These deviations from the original flow chart were made to simplify the code and improve the user experience, limiting their options to the most useful and necessary.
+
+#### Create new list
+
+Due to constraints relating to the use of Google Sheets as a method of persistent storage, it was decided that the application will access a single spreadsheet, consisting of two worksheets, 'Tasks' and 'Done'.
+
+As a result of this decision, the user is presented with both their Tasks list and the main menu when running the app, and the 'View list' option was consolidated into the main options menu.
+
+#### Exiting the application
+
+In the original spec, the user would only be able to exit the application from the 'View list' option.
+
+In the current version, the user is given the option to quit the app from the main menu, as well as the completed tasks section.
+
+This ensures that the user has multiple points at which they can exit the app. A particularly simple example of this logic allows the user to run the app, view their tasks to complete, and quit the app with as little friction as possible.
+
+</details>
 
 <a id=user-goals></a>
 
@@ -195,6 +216,7 @@ Code has been passed through the [Code Institute Pep8 Linter](https://pep8ci.her
 
 <details><summary>Pep8 Linter Results</summary>
 <img src="documentation/pep8LinterResults.png">
+The original 
 </details>
 
 
