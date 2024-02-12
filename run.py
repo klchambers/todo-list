@@ -180,41 +180,57 @@ Alternatively, Enter 'MENU' to return to options menu: """)
     if find_task.lower() == 'menu':
         app_load()
     try:
-        # Finding task and assigning to var
-        task_to_delete = task_list.find(find_task)
-        # Sets True condition for deletion while loop
-        deleting = True
-        # Keeps deletion in process until valid input has been confirmed
-        # or stopped by the user, will repeat if invalid data entered
-        while deleting is True:
-            print(f"You are about to delete the task: \
-'{task_to_delete.value}'")
-            print("Are you sure?")
-            print("")
-            # Confirming user's choice
-            confirm_deletion = input("Type YES to confirm,\
- or NO to return to menu (input is case-sensitive): ")
-            # Deleting task row if YES
-            if confirm_deletion == 'YES':
-                print(f"Deleting {task_to_delete.value}...")
-                task_list.delete_rows(task_to_delete.row)
+        # Assign find_task to task_index if an int, minus one to account
+        # for zero index
+        task_index = int(find_task)-1
+        print(f'You are about to delete the task: {find_task}.')
+        print('Are you sure?')
+        print("")
+        confirm_deletion = input("""Type YES to confirm,\
+ or NO to return to menu (input is case-sensitive) """)
+        if confirm_deletion == "YES":
+            # Adding 1 to target correct row, and to prevent deleting row 0
+            task_list.delete_rows(task_index + 1)
+        else:
+            app_load()
+    except ValueError:
+        try:
+            # Finding task and assigning to var
+            task_to_delete = task_list.find(find_task)
+            # Sets True condition for deletion while loop
+            deleting = True
+            # Keeps deletion in process until valid input has been confirmed
+            # or stopped by the user, will repeat if invalid data entered
+            while deleting is True:
+                print(f"You are about to delete the task: \
+    '{task_to_delete.value}'")
+                print("Are you sure?")
+                print("")
+                # Confirming user's choice
+                confirm_deletion = input("Type YES to confirm,\
+    or NO to return to menu (input is case-sensitive): ")
+                # Deleting task row if YES
+                if confirm_deletion == 'YES':
+                    print(f"Deleting {task_to_delete.value}...")
+                    task_list.delete_rows(task_to_delete.row)
+                    # Breaks while loop and returns to menu
+                    deleting = False
+                    app_load()
                 # Breaks while loop and returns to menu
-                deleting = False
-                app_load()
-            # Breaks while loop and returns to menu with no data deleted if NO
-            elif confirm_deletion == 'NO':
-                deleting = False
-                # clear_terminal()
-                app_load()
-            # While loop remains True and user asked to try again
-            else:
-                print('Invalid choice, please try again')
-    # except statement will handle error if task matching input not found
-    except (TypeError, AttributeError):
-        print(f'''\nNo task found matching\
- '{find_task}'... Please try again.\n''')
-        # Continue to the delete_task function again
-        delete_task()
+                # with no data deleted if NO
+                elif confirm_deletion == 'NO':
+                    deleting = False
+                    # clear_terminal()
+                    app_load()
+                # While loop remains True and user asked to try again
+                else:
+                    print('Invalid choice, please try again')
+        # except statement will handle error if task matching input not found
+        except (TypeError, AttributeError):
+            print(f'''\nNo task found matching\
+    '{find_task}'... Please try again.\n''')
+            # Continue to the delete_task function again
+            delete_task()
 
 
 def task_done():
