@@ -118,6 +118,9 @@ The program has been deployed to Heroku and can be accessed [here](https://pp3to
 
 #### Pep-8 Code Analysis
 
+Code has been passed through the [Code Institute Pep8 Linter](https://pep8ci.herokuapp.com/) and returns with no issues.
+
+![Screenshot of CI Pep8 Linter results](/documentation/pep8LinterResults.pdf)
 
 
 <a id=development-and-deployment></a>
