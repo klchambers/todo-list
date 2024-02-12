@@ -65,7 +65,7 @@ The program has been deployed to Heroku and can be accessed [here](https://pp3to
 
 - I aim to create a useful program through which data can be stored with relevant contextual information, such as dates and priorities/importance
 - I aim to create a program which a user can quit, and come back to at a later date
-- I aim to implement defensive design in the program, so that exceptions and errors are caught and handled well, with as little inconvenience to the user as possible
+- I aim to implement defensive design in the program so that exceptions and errors are caught and handled well, with as little inconvenience to the user as possible
 
 <a id=features></a>
 
@@ -103,7 +103,7 @@ Once a new task is created, the updated To Do list is printed to the terminal al
 
 ### Marking Tasks as Done
 
-To mark a task as Done, the user is asked to enter the index number of their completed task, or the task name.
+To mark a task as Done, the user is asked to enter the index number of their completed task or the task name.
 
 If they enter an invalid index or task name, they are informed that their entered task cannot be found, and are prompted to try again.
 
@@ -121,11 +121,11 @@ It is also possible to delete a task by entering `3` from the main menu. This op
 
 ![Deleting a task screenshot](documentation/screencaps/delete_taskOne.png)
 
-The user is prompted to enter a task's index number or it's title.
+The user is prompted to enter a task's index number or its title.
 
 ![Deleting a task screenshot](documentation/screencaps/delete_taskTwo.png)
 
-A confirmation prompt is then displayed, asking the user to confirm by entering `YES` or `NO`. This prompt is case sensitive to prevent the accidental deletion of unrecoverable data.
+A confirmation prompt is then displayed, asking the user to confirm by entering `YES` or `NO`. This prompt is case-sensitive to prevent the accidental deletion of unrecoverable data.
 
 Once deleted, app_load() is called and the updated Task list is displayed along with the main menu.
 
@@ -137,7 +137,7 @@ Once deleted, app_load() is called and the updated Task list is displayed along 
 
 By entering `4` from the options menu, the user can view a log of their completed tasks along with the dates that they marked these tasks as complete.
 
-Three options are presented: `menu`, which takes the user back to the options menu, `clear`, to delete all data from this list, and `quit`, which calls the built in Python `exit()` function and quits the app.
+Three options are presented: `menu`, which takes the user back to the options menu, `clear`, to delete all data from this list, and `quit`, which calls the built-in Python `exit()` function and quits the app.
 
 ![Completed tasks list screenshot](documentation/screencaps/done_tasks_listScreencap.png)
 
@@ -225,9 +225,9 @@ Code has been passed through the [Code Institute Pep8 Linter](https://pep8ci.her
 
 - [Visual Studio Code](https://code.visualstudio.com/): Code editing
 - [GitHub](https://github.com/): Source control
-- [Heroku](https://www.heroku.com): Live deployment of site
+- [Heroku](https://www.heroku.com): Live deployment of the app
 - [Code Institute PEP8 Linter](https://pep8ci.herokuapp.com/): Python code analysis tool
-- [datetime Python module](https://docs.python.org/3/library/datetime.html): used to input date data into spreadsheet
+- [datetime Python module](https://docs.python.org/3/library/datetime.html): used to input date data into the spreadsheet
 - [Google Sheets](https://www.google.com/sheets/about/): Cloud-based spreadsheet editor used to store data
 - [gspread API](https://docs.gspread.org/en/latest/): Python API for Google Sheets, used to access spreadsheets, provide access to run.py, and read, write and format cells
 - [Google Drive API](https://developers.google.com/drive/api/guides/about-sdk): REST API, credentials, and authorisation
@@ -242,6 +242,6 @@ ANSI character methods to print bold text in the terminal adapted from examples 
 
 [This](https://patorjk.com/software/taag) text to ASCII art generator by Patrick Gillespie on [patrorjk.com](https://patorjk.com/) was used to generate the ASCII art displayed on app load.
 
-Course content from Code Institute's Diploma in Full Stack Software Development has been useful and in teaching programming concepts and Python methods.
+Course content from Code Institute's Diploma in Full Stack Software Development has been useful in teaching programming concepts and Python methods.
 
-Guidance from Code Institute mentor Brian O'Hare has been invaluable throughout stages of this project's inception and development.
+Guidance from Code Institute mentor Brian O'Hare has been invaluable throughout the stages of this project's inception and development.
