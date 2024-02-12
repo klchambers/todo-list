@@ -231,28 +231,40 @@ def task_done():
     display_list()
     # Asks user which task they have completed
     # This gets assigned to find_task
-    find_task = input("""Which task have you completed?
+    find_task = input("""\nWhich task have you completed?
+Enter the task index number or task title.
 Alternatively, Enter 'MENU' to return to options menu: """)
-    if find_task.lower() == 'menu':
+    if find_task == 'menu':
         app_load()
     try:
-        # Looks for cell with matching value to find_task,
-        # Assign this to the done_task var
-        done_task = task_list.find(find_task)
-        # Deletes task from Task sheet
-        task_list.delete_rows(done_task.row)
-        # Adds the completed task to the Done sheet
-        done_list.append_row([done_task.value, str(date_completed)])
-        # Clears terminal and reloads app menu display
-        clear_terminal()
-        app_load()
+        # Assign find_task to task_index if an int, minus one to account
+        # for zero index
+        task_index = int(find_task)-1
+        done_task = task_list.cell(task_index + 1, 1).value
+        # Adding 1 to target correct row, and to prevent deleting row 0
+        task_list.delete_rows(task_index + 1)
+        # Appending done_task to the Done worksheet, with date completed
+        done_list.append_row([done_task, str(date_completed)])
+    except ValueError:
+        try:
+            # Looks for cell with matching value to find_task,
+            # Assign this to the done_task var
+            done_task = task_list.find(find_task)
+            # Deletes task from Task sheet
+            task_list.delete_rows(done_task.row)
+            # Adds the completed task to the Done sheet
+            done_list.append_row([done_task.value, str(date_completed)])
+            # Clears terminal and reloads app menu display
+            clear_terminal()
+            app_load()
 
-    # If no matching task is found, user given choice
-    # to try again or return to menu
-    except (TypeError, AttributeError):
-        print(f'\nNo task found matching {find_task}... Please try again.\n')
-        # Convert string to lower in case caps lock is enabled
-        task_done()
+        # If no matching task is found, user given choice
+        # to try again or return to menu
+        except (TypeError, AttributeError):
+            print(f'\nNo task found matching {find_task}... \
+Please try again.\n')
+            # Convert string to lower in case caps lock is enabled
+            task_done()
 
 
 def user_options():
