@@ -12,6 +12,7 @@
   - [Main Menu](#main-menu)
   - [Creating a Task](#creating-a-task)
   - [Marking Tasks as Done](#marking-tasks-as-done)
+  - [Deleting a Task](#deleting_a_task)
   - [Completed Tasks List](#completed-tasks-list)
   - [Data Model](#data-model)
 - [Testing and Validation](#testing-and-validation)
@@ -76,25 +77,75 @@ The program has been deployed to Heroku and can be accessed [here](https://pp3to
 
 ### Main menu
 
+Upon running the application, the user is presented with their To Do list and the main menu. If the To Do list is empty, a message telling the user that they have no tasks to complete is displayed.
 
+The menu consists of five options. Four of these are accessible by entering a number from 1 - 4, while the fifth (exiting the application) is triggered by entering the word `exit`. This prompt was chosen in favour over a numerical command in order to prevent accidental exits, to improve the user experience.
+
+![Main menu screenshot](documentation/screencaps/app_loadScreencap.png)
 
 <a id=creating-a-task></a>
 
 ### Creating a Task
 
+From the main menu, entering `1` calls the create_task function, and the user is asked to enter their new task.
 
+There are a handful of keywords (stored in the important_keywords) variable that the user is forbidden from entering as a task name:
+
+`important_keywords = ['quit', 'menu', 'clear', 'yes', 'no']`
+
+These keywords have been reserved for prompts that are used elsewhere in the application. It is important that these words are not used as Task names as the creation of such tasks results in list items that cannot be marked as completed or removed from the To Do list.
+
+Once a new task is created, the updated To Do list is printed to the terminal along with the main menu options.
+
+![Creating a task screenshot](documentation/screencaps/create_taskCompletedScreencap.png)
 
 <a id=marking-tasks-as-done></a>
 
 ### Marking Tasks as Done
 
+To mark a task as Done, the user is asked to enter the index number of their completed task, or the task name.
 
+If they enter an invalid index or task name, they are informed that their entered task cannot be found, and are prompted to try again.
+
+![Completed task screenshot](documentation/screencaps/task_doneScreencap.png)
+
+Once a valid index number or task name has been received, the task is removed from the To Do list and moved to the list of completed tasks, with a record of the date that the task was marked as complete.
+
+![Completed task screenshot 2](documentation/screencaps/task_doneCompletedScreencap.png)
+
+<a id=deleting_a_task></a>
+
+### Deleting a Task
+
+It is also possible to delete a task by entering `3` from the main menu. This option differs from marking a task as complete as it removes the task and all data related to it, in contrast to marking a task as done which preserves the title and moves it to the completed task list.
+
+![Deleting a task screenshot](documentation/screencaps/delete_taskOne.png)
+
+The user is prompted to enter a task's index number or it's title.
+
+![Deleting a task screenshot](documentation/screencaps/delete_taskTwo.png)
+
+A confirmation prompt is then displayed, asking the user to confirm by entering `YES` or `NO`. This prompt is case sensitive to prevent the accidental deletion of unrecoverable data.
+
+Once deleted, app_load() is called and the updated Task list is displayed along with the main menu.
+
+![Deleting a task screenshot](documentation/screencaps/delete_taskThree.png)
 
 <a id=completed-tasks-list></a>
 
 ### Completed Tasks List
 
+By entering `4` from the options menu, the user can view a log of their completed tasks along with the dates that they marked these tasks as complete.
 
+Three options are presented: `menu`, which takes the user back to the options menu, `clear`, to delete all data from this list, and `quit`, which calls the built in Python `exit()` function and quits the app.
+
+![Completed tasks list screenshot](documentation/screencaps/done_tasks_listScreencap.png)
+
+When `clear` is chosen, the user is asked to confirm their choice. This Yes/No option is case-sensitive to defend against the possibility of accidental deletion of unrecoverable data.
+
+![Clear completed tasks list screenshot](documentation/screencaps/clearDoneTasks.png)
+
+Once cleared, all data is removed from the 'Done' worksheet and the user is taken back to the main menu.
 
 <a id=data-model></a>
 
