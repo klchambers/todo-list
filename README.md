@@ -41,6 +41,15 @@ The program has been deployed to Heroku and can be accessed [here](https://pp3to
 
 ## User Experience
 
+### Workflow
+
+
+
+![Application flow diagram](/documentation/finalPP3Flowchart.pdf)
+
+<details><summary>Project inception application flow</summary>
+<img src="documentation/draftPP3Flowchart.pdf"></details>
+
 <a id=user-goals></a>
 
 ### User Goals
