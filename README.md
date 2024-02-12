@@ -28,7 +28,7 @@
 
 ## Introduction
 
-
+To Do List is a CLI application written in Python that allows a user to record and store their To Do tasks, mark tasks as complete, and see when they created or completed tasks.
 
 <a id=deployed-site></a>
 
