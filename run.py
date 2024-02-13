@@ -28,6 +28,8 @@ def app_load():
     before running user_options function
     """
     clear_terminal()
+    # ASCII art generated using Peter Gillespie's text to ASCII art generator
+    # Available at https://patorjk.com/software/taag
     print(r"""
  _____      ______        _     _     _   _
 |_   _|     |  _  \      | |   (_)   | | | |
@@ -66,6 +68,8 @@ Would you like to add a task?\nEnter YES to create a task,\
             # after escape character 033[1m sets text weight to bold,
             # 033[0m after task resets to default
             # [0] index ensures that task value is printed rather than object
+            # Code adapted from examples posted by Peter Mortensen and Bacara
+            # On Stack Overflow
             print(f'{index}\033[1m {task[0]} (created on {task[1]})\033[m')
 
 
@@ -90,6 +94,11 @@ def display_done_tasks():
         print(f"""Well done! You've completed {len(done_list)} tasks.
 Here's your full list: """)
         for task in list(done_list):
+            # after escape character 033[1m sets text weight to bold,
+            # 033[0m after task resets to default
+            # [0] index ensures that task value is printed rather than object
+            # Code adapted from examples posted by Peter Mortensen and Bacara
+            # On Stack Overflow
             print(f'\033[1m • {task[0]} (completed on {task[1]}) \033[m')
         # Gets user choice of what to do next
         choice = input('''Enter 'menu' to return to the main menu,
@@ -144,6 +153,8 @@ def create_task():
     print('Loading create task function...')
     clear_terminal()
     # Assigns the current date to date_created variable
+    # Date formatting using. strftime() adapted from example posted by
+    # NPE on Stack Overflow
     date_created = date.today().strftime('%b %d, %Y')
     # Assigning user input to task variable, to be appended to Task sheet
     task = input('Enter your new task: ')
@@ -299,6 +310,8 @@ def user_options():
             # after escape character 033[1m sets text weight to bold,
             # 033[0m after task resets to default
             # [0] index ensures that task value is printed rather than object
+            # Code adapted from examples posted by Peter Mortensen and Bacara
+            # On Stack Overflow
             print(f'\033[1m • {task[0]} (created on {task[1]})\033[m')
     choice = input('''\nWhat would you like to do?\n
 1: Create a new task\n2: Mark a task as done
