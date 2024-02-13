@@ -1,7 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import os
-from datetime import date
+from datetime import datetime
 import csv
 
 SCOPE = [
@@ -159,7 +159,7 @@ def create_task():
     # Assigns the current date to date_created variable
     # Date formatting using. strftime() adapted from example posted by
     # NPE on Stack Overflow
-    date_created = date.today().strftime('%b %d, %Y')
+    date_created = datetime.today().strftime('%b %d, %Y')
     # Assigning user input to task variable, to be appended to Task sheet
     task = input('Enter your new task: ')
     # Declaring a list of critical keywords that shouldn't be entered
@@ -258,7 +258,7 @@ def task_done():
     # Assigning Done worksheet to done_list var
     done_list = SHEET.worksheet('Done')
     # Assigning completed date to be appended to second column
-    date_completed = date.today().strftime('%b %d, %Y')
+    date_completed = datetime.today().strftime('%b %d, %Y')
     # Shows users tasks on their list
     display_list()
     # Asks user which task they have completed
@@ -300,14 +300,17 @@ Please try again.\n')
 
 
 def export_data():
-    with open(f'tasks_list_{date.today()}.csv', 'w', newline='') as file:
+    file_to_export = f'tasks_list_{datetime.now()}.csv'
+
+    with open(file_to_export, 'w', newline='') as file:
         todo_list = SHEET.worksheet('Tasks').get_all_values()
         fields = ['Task', 'Date Created']
         writer = csv.writer(file, fields)
-        # writer.writeheader()
         for value in todo_list:
             writer.writerow(value)
-            # csv.DictReader(writer)
+
+    clear_terminal()
+    user_options()
 
 
 def user_options():
