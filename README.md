@@ -206,25 +206,26 @@ Tasks that have been completed are moved from the "Tasks" worksheet to the "Done
 
 ### Manual Testing Methodology
 
-| Test ID | Action                           | Expected Results                                       |
-|---------|----------------------------------|--------------------------------------------------------|
-| 1       | Open the application             | The main menu is displayed                             |
+| Test ID | Action                          | Expected Results                                       |
+|---------|---------------------------------|--------------------------------------------------------|
+| 1       | Open the application            | The main menu is displayed                             |
 | 2       | Create a new task               | Task creation form appears                             |
 | 3       | Enter a task name               | Task name field accepts input                          |
-| 4       | Enter an invalid task name      | Error message is displayed                            |
+| 4       | Enter an invalid task name      | Error message is displayed                             |
 | 5       | Enter a task name and submit    | Task is added to the task list                         |
 | 6       | View tasks in the task list     | All tasks are displayed in the task list               |
 | 7       | Mark a task as done             | Task is moved to the completed tasks list              |
 | 8       | Delete a task                   | Task is removed from the task list                     |
-| 9       | Clear completed tasks list      | Completed tasks list is cleared                        |
-| 10      | Attempt to exit the application| Confirmation prompt is displayed                       |
-| 11      | Confirm exit                    | Application closes                                     |
-| 12      | Cancel exit                     | Application remains open                               |
+| 9       | View completed tasks list       | Completed tasks list is cleared                        |
+| 10      | Clear the completed tasks list  | Confirmation prompt is displayed                       |
+| 10      | Cancel clear of completed tasks | List clear procedure cancelled and returns to main menu|
+| 11      | Confirm clear of completed tasks| Completed tasks list is now empty                      |
+| 12      | Exit app                        | Terminal clears and program exits                      |
 
 
 <a id=pep8-code-analysis></a>
 
-#### Pep-8 Code Analysis
+### Pep-8 Code Analysis
 
 Code has been passed through the [Code Institute Pep8 Linter](https://pep8ci.herokuapp.com/) and returns with no issues.
 
