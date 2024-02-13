@@ -215,8 +215,7 @@ Tasks that have been completed are moved from the "Tasks" worksheet to the "Done
 Code has been passed through the [Code Institute Pep8 Linter](https://pep8ci.herokuapp.com/) and returns with no issues.
 
 <details><summary>Pep8 Linter Results</summary>
-<img src="documentation/pep8LinterResults.png">
-The original 
+<img src="documentation/pep8LinterResults.png"> 
 </details>
 
 
