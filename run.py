@@ -300,16 +300,23 @@ Please try again.\n')
 
 
 def export_data():
+    """
+    writes data in Tasks worksheet to CSV format and saves in directory
+    """
+    # Assigns string to be saved to the file name
+    # datetime.now() gets current date and time to create unique file names
     file_to_export = f'tasks_list_{datetime.now()}.csv'
 
     with open(file_to_export, 'w', newline='') as file:
+        # Getting valies from Tasks worksheet
         todo_list = SHEET.worksheet('Tasks').get_all_values()
-        fields = ['Task', 'Date Created']
-        writer = csv.writer(file, fields)
-        writer.writerow(fields)
+        # Assigning headers to field_headers variable to print on first line
+        field_headers = ['Task', 'Date Created']
+        writer = csv.writer(file)
+        writer.writerow(field_headers)
+        # for loop iterates over values on sheet, writes them to CSV file
         for value in todo_list:
             writer.writerow(value)
-
     clear_terminal()
     user_options()
 
