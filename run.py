@@ -306,6 +306,7 @@ def export_data():
         todo_list = SHEET.worksheet('Tasks').get_all_values()
         fields = ['Task', 'Date Created']
         writer = csv.writer(file, fields)
+        writer.writerow(fields)
         for value in todo_list:
             writer.writerow(value)
 
