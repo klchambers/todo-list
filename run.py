@@ -2,6 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import os
 from datetime import date
+import csv
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -298,6 +299,17 @@ Please try again.\n')
             task_done()
 
 
+def export_data():
+    with open(f'tasks_list_{date.today()}.csv', 'w', newline='') as file:
+        todo_list = SHEET.worksheet('Tasks').get_all_values()
+        fields = ['Task', 'Date Created']
+        writer = csv.writer(file, fields)
+        # writer.writeheader()
+        for value in todo_list:
+            writer.writerow(value)
+            # csv.DictReader(writer)
+
+
 def user_options():
     """
     Uses if/else to take user input and run corresponding function
@@ -318,8 +330,8 @@ def user_options():
             print(f'\033[1m • {task[0]} (created on {task[1]})\033[m')
     choice = input('''\nWhat would you like to do?\n
 1: Create a new task\n2: Mark a task as done
-3: Delete a task from your To Do list\n4: View your completed tasks\n
-Or type 'exit' to quit: ''')
+3: Delete a task from your To Do list\n4: View your completed tasks
+5: Export your tasks list to CSV\nOr type 'exit' to quit: ''')
     # Checking user input against the listed options
     if choice == str(1):
         print("")
@@ -334,6 +346,9 @@ Or type 'exit' to quit: ''')
     elif choice == str(4):
         print("")
         display_done_tasks()
+    elif choice == str(5):
+        print("")
+        export_data()
     elif choice.lower() == 'exit':
         clear_terminal()
         exit()
