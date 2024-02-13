@@ -17,7 +17,7 @@
   - [Completed Tasks List](#completed-tasks-list)
   - [Data Model](#data-model)
 - [Testing and Validation](#testing-and-validation)
-  - [Testing Methodology](#testing-methodology)
+  - [Manual Testing Methodology](#manual-testing-methodology)
   - [Pep-8 Code Analysis](#pep-8-code-analysis)
   - [Development](#development)
   - [Contributing](#contributing)
@@ -202,10 +202,24 @@ Tasks that have been completed are moved from the "Tasks" worksheet to the "Done
 
 
 
-<a id=testing-methodology></a>
+<a id=manual-testing-methodology></a>
 
-### Testing Methodology
+### Manual Testing Methodology
 
+| Test ID | Action                           | Expected Results                                       |
+|---------|----------------------------------|--------------------------------------------------------|
+| 1       | Open the application             | The main menu is displayed                             |
+| 2       | Create a new task               | Task creation form appears                             |
+| 3       | Enter a task name               | Task name field accepts input                          |
+| 4       | Enter an invalid task name      | Error message is displayed                            |
+| 5       | Enter a task name and submit    | Task is added to the task list                         |
+| 6       | View tasks in the task list     | All tasks are displayed in the task list               |
+| 7       | Mark a task as done             | Task is moved to the completed tasks list              |
+| 8       | Delete a task                   | Task is removed from the task list                     |
+| 9       | Clear completed tasks list      | Completed tasks list is cleared                        |
+| 10      | Attempt to exit the application| Confirmation prompt is displayed                       |
+| 11      | Confirm exit                    | Application closes                                     |
+| 12      | Cancel exit                     | Application remains open                               |
 
 
 <a id=pep8-code-analysis></a>
