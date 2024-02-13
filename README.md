@@ -16,13 +16,14 @@
   - [Deleting a Task](#deleting_a_task)
   - [Completed Tasks List](#completed-tasks-list)
   - [Data Model](#data-model)
+  - [Further Development and Future Features](#further-development-and-future-features)
 - [Testing and Validation](#testing-and-validation)
   - [Manual Testing Methodology](#manual-testing-methodology)
   - [Pep-8 Code Analysis](#pep-8-code-analysis)
+  - [Bugs and Challenges](#bugs-and-challenges)
   - [Development](#development)
   - [Contributing](#contributing)
   - [Deployment](#deployment)
-  - [Further Development and Future Features](#further-development-and-future-features)
 - [Technologies Used](#technologies-used)
 - [Acknowledgements](#acknowledgements)
 
@@ -195,6 +196,11 @@ Tasks that have been completed are moved from the "Tasks" worksheet to the "Done
 1. **Task Name**: The description of the completed task.
 2. **Date Completed**: The date when the task was marked as completed. Similar to the "Date Created" field, this is automatically populated when a task is moved to the "Done" list.
 
+<a id=further-development-and-future-features></a>
+
+### Further Development and Future Features
+
+
 
 <a id=testing-and-validation></a>
 
@@ -233,6 +239,9 @@ Code has been passed through the [Code Institute Pep8 Linter](https://pep8ci.her
 <img src="documentation/pep8LinterResults.png"> 
 </details>
 
+<a id=bugs-and-challenges>
+
+### Bugs and Challenges
 
 <a id=development-and-deployment></a>
 
@@ -258,16 +267,11 @@ Code has been passed through the [Code Institute Pep8 Linter](https://pep8ci.her
 
 
 
-<a id=further-development-and-future-features></a>
-
-### Further Development and Future Features
-
-
-
 <a id=technologies-used></a>
 
 ## Technologies Used
 
+- [Lucidchart](https://www.lucidchart.com/pages/): Diagrams/flowcharts for application logic
 - [Visual Studio Code](https://code.visualstudio.com/): Code editing
 - [GitHub](https://github.com/): Source control
 - [Heroku](https://www.heroku.com): Live deployment of the app
@@ -280,6 +284,8 @@ Code has been passed through the [Code Institute Pep8 Linter](https://pep8ci.her
 <a id=acknowledgements></a>
 
 ## Acknowledgements
+
+The if/else statement used in clear_terminal to determine os.clear method based on operating system was posted by the user [poke](https://stackoverflow.com/users/216074/poke) in [this](https://stackoverflow.com/questions/2084508/clear-the-terminal-in-python) Stack Overflow thread.
 
 Date formatting using `strftime()` method adapted from an example posted by [NPE](https://stackoverflow.com/users/367273/npe) in [this](https://stackoverflow.com/questions/6288892/python-how-to-convert-datetime-format) Stack Overflow thread.
 
