@@ -19,7 +19,10 @@ def clear_terminal():
     """
     Clears the terminal when called, improving readability
     """
-    os.system('clear')
+    # if else statement to clear terminal depending on operating system
+    # was posted by user 'poke' on Stack Overflow on Jan 18, 2010
+    # if operating system is Windows, use 'cls', or clear if unix
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def app_load():
