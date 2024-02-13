@@ -239,7 +239,7 @@ Code has been passed through the [Code Institute Pep8 Linter](https://pep8ci.her
 <img src="documentation/pep8LinterResults.png"> 
 </details>
 
-<a id=bugs-and-challenges>
+<a id=bugs-and-challenges></a>
 
 ### Bugs and Challenges
 
