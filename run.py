@@ -91,15 +91,15 @@ def display_done_tasks():
     # Assigning worksheet to done_sheet for gspread .clear() function
     done_sheet = SHEET.worksheet('Done')
     # Prints message and loads main menu if no tasks are completed
-    if done_list == [[]]:
+    if len(done_list) <= 1:
         print('You have no completed tasks!\n')
-        print('Loading main menu...\n')
-        user_options()
+        input('Press the Enter key to return to the main menu')
+        app_load()
     # Prints # of tasks in Done sheet and lists them in bold
     else:
         print(f"""Well done! You've completed {len(done_list)} tasks.
 Here's your full list: """)
-        for task in list(done_list):
+        for task in list(done_list[1:]):
             # after escape character 033[1m sets text weight to bold,
             # 033[0m after task resets to default
             # [0] index ensures that task value is printed rather than object
