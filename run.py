@@ -128,7 +128,7 @@ or 'quit' to exit the app: ''')
                 # Deleting all data from sheet if YES
                 if confirm_deletion == 'YES':
                     print("Deleting your completed tasks...")
-                    done_sheet.clear()
+                    done_sheet.delete_rows(2, len(done_list))
                     # Breaks while loop and returns to menu
                     deleting = False
                     clear_terminal()
@@ -207,7 +207,7 @@ Alternatively, Enter 'MENU' to return to options menu: """)
  or NO to return to menu (input is case-sensitive) """)
         if confirm_deletion == "YES":
             # Adding 1 to target correct row, and to prevent deleting row 0
-            task_list.delete_rows(task_index + 1)
+            task_list.delete_rows(task_index + 2)
             app_load()
         else:
             app_load()
