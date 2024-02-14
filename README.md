@@ -243,6 +243,8 @@ Code has been passed through the [Code Institute Pep8 Linter](https://pep8ci.her
 
 ### Bugs and Challenges
 
+
+
 <a id=development-and-deployment></a>
 
 ## Development and Deployment
@@ -284,6 +286,10 @@ Code has been passed through the [Code Institute Pep8 Linter](https://pep8ci.her
 <a id=acknowledgements></a>
 
 ## Acknowledgements
+
+Using os.path.expanduser('~/Downloads') to download csv file to users download folder adapted from code posted to Stack Overflow by users [theDude](https://stackoverflow.com/users/12737389/thedude) and [nagyl](https://stackoverflow.com/users/11080283/nagyl) in [this thread](https://stackoverflow.com/questions/60475285/accessing-users-download-folder-in-python). 
+
+Code used to write rows to csv using the built-in Python csv module adapted from code posted in [this](https://ioflood.com/blog/python-write-to-csv/) blog post by Gabriel Ramuglia, posted to the [ioflood.com blog](https://ioflood.com/blog) on 13 September, 2023.
 
 The if/else statement used in clear_terminal to determine os.clear method based on operating system was posted by the user [poke](https://stackoverflow.com/users/216074/poke) in [this](https://stackoverflow.com/questions/2084508/clear-the-terminal-in-python) Stack Overflow thread.
 
