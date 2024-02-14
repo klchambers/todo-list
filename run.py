@@ -341,6 +341,9 @@ def export_data():
         user_options()
     except FileNotFoundError as e:
         print(f'Error exporting CSV file: {e}')
+        input('Press the Enter key to return to the main menu')
+        clear_terminal()
+        app_load()
 
 
 def user_options():
