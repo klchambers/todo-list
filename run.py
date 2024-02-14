@@ -305,18 +305,34 @@ def export_data():
     """
     # Assigns string to be saved to the file name
     # datetime.now() gets current date and time to create unique file names
-    file_to_export = f'tasks_list_{datetime.now()}.csv'
+    file_name = f'tasks_list_{datetime.now()}.csv'
+    # os.path.expand user adapted from code posted to
+    # Stack Overflow by users theDude and nagyl
+    downloads_path = os.path.expanduser('~/Downloads')
+    file_to_export = os.path.join(downloads_path, file_name)
 
+    # Adapted from code posted to ioflood.com/blog by Gabriel Ramuglia 13/9/23
     with open(file_to_export, 'w', newline='') as file:
         # Getting valies from Tasks worksheet
         todo_list = SHEET.worksheet('Tasks').get_all_values()
+        #
+        done_list = SHEET.worksheet('Done').get_all_values()
         # Assigning headers to field_headers variable to print on first line
-        field_headers = ['Task', 'Date Created']
+        todo_field_headers = ['Task', 'Date Created']
+        complete_field_headers = ['Task', 'Date Completed']
         writer = csv.writer(file)
-        writer.writerow(field_headers)
+        writer.writerow(['To Do List:'])
+        writer.writerow(todo_field_headers)
         # for loop iterates over values on sheet, writes them to CSV file
         for value in todo_list:
             writer.writerow(value)
+        writer.writerow(['Completed Tasks:'])
+        writer.writerow(complete_field_headers)
+        for value in done_list:
+            writer.writerow(value)
+    print(f'CSV file generated: {file_name}')
+    print(f'You can find the file in the Downloads folder: {downloads_path}')
+    input('Press the enter key to return to the main menu')
     clear_terminal()
     user_options()
 
