@@ -3,6 +3,7 @@ from google.oauth2.service_account import Credentials
 import os
 from datetime import datetime
 import csv
+import pyperclip
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -319,6 +320,8 @@ def export_data():
             todo_list = SHEET.worksheet('Tasks').get_all_values()
             #
             done_list = SHEET.worksheet('Done').get_all_values()
+
+            all_data = SHEET.worksheets()
             # Assigning headers to field_headers variable to
             # print on first line
             todo_field_headers = ['Task', 'Date Created']
@@ -340,10 +343,29 @@ def export_data():
         clear_terminal()
         user_options()
     except FileNotFoundError as e:
-        print(f'Error exporting CSV file: {e}')
-        input('Press the Enter key to return to the main menu')
-        clear_terminal()
-        app_load()
+        all_data = SHEET.worksheets()
+        print(f'\nError exporting CSV file: {e}')
+        print('Downloading csv files is not available via Heroku deployment.')
+        choice = input('''Would you like to copy your csv data to the \
+    clipboard?
+    Enter YES to copy csv data, or NO to return to the main menu.
+    (input is case-sensitive) ''')
+        if choice == 'YES':
+            data_to_copy = ''
+            for worksheet in all_data:
+                # Extract data from each worksheet
+                data = worksheet.get_all_values()
+                # Convert data to string and concatenate
+                data_to_copy += str(data) + ', ' + '\n\n'
+            pyperclip.copy(data_to_copy)
+            input('''Data successfully copied to clipboard!\n
+    Press the Enter key to return to the main menu''')
+        elif choice == 'NO':
+            clear_terminal()
+            app_load()
+        else:
+            print('Invalid input. Please try again.')
+            export_data()
 
 
 def user_options():
