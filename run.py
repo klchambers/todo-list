@@ -56,7 +56,7 @@ def display_list():
     # Assigning tasks worksheet to todo_list variable
     todo_list = SHEET.worksheet('Tasks').get_all_values()
     # Checking if Tasks list has to do items
-    if todo_list == [[]]:
+    if len(todo_list) <= 1:
         choice = input("""\nYour To Do list is empty! \
 Would you like to add a task?\nEnter YES to create a task,\
  or press any key to return to menu: """)
@@ -69,7 +69,8 @@ Would you like to add a task?\nEnter YES to create a task,\
             clear_terminal()
             user_options()
     else:
-        for index, task in enumerate(todo_list, 1):
+        # For loop starts at index 1 to avoid printing header row
+        for index, task in enumerate(todo_list[1:], 1):
             # after escape character 033[1m sets text weight to bold,
             # 033[0m after task resets to default
             # [0] index ensures that task value is printed rather than object
@@ -273,11 +274,12 @@ Alternatively, Enter 'MENU' to return to options menu: """)
         # Assign find_task to task_index if an int, minus one to account
         # for zero index
         task_index = int(find_task)-1
-        done_task = task_list.cell(task_index + 1, 1).value
+        done_task = task_list.cell(task_index + 2, 1).value
         # Adding 1 to target correct row, and to prevent deleting row 0
-        task_list.delete_rows(task_index + 1)
+        task_list.delete_rows(task_index + 2)
         # Appending done_task to the Done worksheet, with date completed
         done_list.append_row([done_task, str(date_completed)])
+        app_load()
     except ValueError:
         try:
             # Looks for cell with matching value to find_task,
@@ -324,16 +326,15 @@ def export_data():
             all_data = SHEET.worksheets()
             # Assigning headers to field_headers variable to
             # print on first line
-            todo_field_headers = ['Task', 'Date Created']
-            complete_field_headers = ['Task', 'Date Completed']
+
             writer = csv.writer(file)
             writer.writerow(['To Do List:'])
-            writer.writerow(todo_field_headers)
+
             # for loop iterates over values on sheet, writes them to CSV file
             for value in todo_list:
                 writer.writerow(value)
             writer.writerow(['Completed Tasks:'])
-            writer.writerow(complete_field_headers)
+
             for value in done_list:
                 writer.writerow(value)
         print(f'CSV file generated: {file_name}')
@@ -374,12 +375,12 @@ def user_options():
     """
     todo_list = SHEET.worksheet('Tasks').get_all_values()
     # Checking if Tasks list has to do items
-    if todo_list == [[]]:
+    if len(todo_list) <= 1:
         # If empty, prints the following in bold
         print('\033[1mYour To Do list is empty!\033[0m')
     else:
         print('Here are your tasks to complete:')
-        for task in list(todo_list):
+        for task in list(todo_list[1:]):
             # after escape character 033[1m sets text weight to bold,
             # 033[0m after task resets to default
             # [0] index ensures that task value is printed rather than object
