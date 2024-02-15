@@ -15,6 +15,7 @@
   - [Marking Tasks as Done](#marking-tasks-as-done)
   - [Deleting a Task](#deleting_a_task)
   - [Completed Tasks List](#completed-tasks-list)
+  - [Exporting Data](#exporting-data)
   - [Data Model](#data-model)
   - [Further Development and Future Features](#further-development-and-future-features)
 - [Testing and Validation](#testing-and-validation)
@@ -177,6 +178,36 @@ When `clear` is chosen, the user is asked to confirm their choice. This Yes/No o
 ![Clear completed tasks list screenshot](documentation/screencaps/clearDoneTasks.png)
 
 Once cleared, all data is removed from the 'Done' worksheet and the user is taken back to the main menu.
+
+<a id=exporting-data></a>
+
+### Exporting Data
+
+By slecting 5 from the options menu, the user can export their data in CSV format.
+
+The export_data function uses try/except blocks to determine the method used to deliver this data to the user
+
+#### Automatic download of csv file
+
+The initial try block creates a file using the datetime.now() method (used to create a unique file name, allowing multiple files to be exported on the same day). This file is written using the csv.writer() method to write the csv file, and os.path to save it to the user's downloads folder.
+
+![Screenshot of csv file in downloads folder]()
+
+![Screenshot of csv file contents]()
+
+#### Use pyperclip module to copy csv data to clipboard
+
+If a FileNotFoundError is raised, indicating that the user's download's folder is not in the expected directory, pyperclip is used to copy the csv data to the user's clipboard. **The user is asked to confirm this, in order to prevent the accidental deletion of data from the clipboard without the user's knowedge** (Not yet implemented - WIP).
+
+A message is displayed to the user explaining that a FileNotFoundError was raised and so this method was used. 
+
+#### Print data in terminal for user to manually copy/paste
+
+Finally, if Pyperclip is unable to copy to the local clipboard (for example, the user is running the app via the Heroku deployment, rather than locally).
+
+The user is told that pyperclip is unable to copy their data to the clipboard, and that their data will be printed in the terminal in csv format for manual copy/pasting.
+
+![Screenshot showing pyperclip error message and printing of csv data in the terminal]()
 
 <a id=data-model></a>
 
