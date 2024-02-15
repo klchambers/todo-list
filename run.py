@@ -345,12 +345,12 @@ def export_data():
         user_options()
     except FileNotFoundError as e:
         all_data = SHEET.worksheets()
-        print(f'\nError exporting CSV file: {e}')
+        print(f'\nError exporting CSV file: {e}\n')
         print('Downloading csv files is not available via Heroku deployment.')
         choice = input('''Would you like to copy your csv data to the \
-    clipboard?
-    Enter YES to copy csv data, or NO to return to the main menu.
-    (input is case-sensitive) ''')
+clipboard?\n
+Enter YES to copy csv data, or NO to return to the main menu.
+(input is case-sensitive) ''')
         if choice == 'YES':
             data_to_copy = ''
             for worksheet in all_data:
@@ -367,6 +367,29 @@ def export_data():
         else:
             print('Invalid input. Please try again.')
             export_data()
+    finally:
+        try:
+            # Get data from Google Sheets
+            todo_list = SHEET.worksheet('Tasks').get_all_values()
+            done_list = SHEET.worksheet('Done').get_all_values()
+
+            print('Cannot copy data to clipboard in Herokud deployment.')
+            print('Printing data in csv format for manual copy/paste...\n')
+            # Print data in CSV format to terminal
+            print('To Do List:')
+            for row in todo_list:
+                print(','.join(row))
+
+            print('\nCompleted Tasks:')
+            for row in done_list:
+                print(','.join(row))
+
+            input('\nPress the Enter key to return to the menu: ')
+            app_load()
+        except Exception as e:
+            print(f'Error exporting Google Sheets data: {e}')
+            input('\nPress the Enter key to return to the menu: ')
+            app_load()
 
 
 def user_options():
