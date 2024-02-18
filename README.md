@@ -143,7 +143,9 @@ If they enter an invalid index or task name, they are informed that their entere
 
 Once a valid index number or task name has been received, the task is removed from the To Do list and moved to the list of completed tasks, with a record of the date that the task was marked as complete.
 
-![Completed task screenshot 2](documentation/screencaps/task_doneCompletedScreencap.png)
+![Completed task screenshot 2](documentation/screencaps/task_doneIndexInProgress.png)
+
+![Completed task Screenshot 3](documentation/screencaps/task_doneNameInProgress.png)
 
 <a id=deleting_a_task></a>
 
@@ -151,17 +153,13 @@ Once a valid index number or task name has been received, the task is removed fr
 
 It is also possible to delete a task by entering `3` from the main menu. This option differs from marking a task as complete as it removes the task and all data related to it, in contrast to marking a task as done which preserves the title and moves it to the completed task list.
 
-![Deleting a task screenshot](documentation/screencaps/delete_taskOne.png)
-
 The user is prompted to enter a task's index number or its title.
 
-![Deleting a task screenshot](documentation/screencaps/delete_taskTwo.png)
+![Deleting a task screenshot](documentation/screencaps/delete_taskOneScreencap.png)
 
 A confirmation prompt is then displayed, asking the user to confirm by entering `YES` or `NO`. This prompt is case-sensitive to prevent the accidental deletion of unrecoverable data.
 
 Once deleted, app_load() is called and the updated Task list is displayed along with the main menu.
-
-![Deleting a task screenshot](documentation/screencaps/delete_taskThree.png)
 
 <a id=completed-tasks-list></a>
 
@@ -171,7 +169,9 @@ By entering `4` from the options menu, the user can view a log of their complete
 
 Three options are presented: `menu`, which takes the user back to the options menu, `clear`, to delete all data from this list, and `quit`, which calls the built-in Python `exit()` function and quits the app.
 
-![Completed tasks list screenshot](documentation/screencaps/done_tasks_listScreencap.png)
+![Completed tasks list screenshot](documentation/screencaps/task_doneIndexInProgress.png)
+
+![Completed tasks list screenshot](documentation/screencaps/task_doneNameInProgress.png)
 
 When `clear` is chosen, the user is asked to confirm their choice. This Yes/No option is case-sensitive to defend against the possibility of accidental deletion of unrecoverable data.
 
@@ -191,23 +191,15 @@ The export_data function uses try/except blocks to determine the method used to 
 
 The initial try block creates a file using the datetime.now() method (used to create a unique file name, allowing multiple files to be exported on the same day). This file is written using the csv.writer() method to write the csv file, and os.path to save it to the user's downloads folder.
 
-![Screenshot of csv file in downloads folder]()
+![Screenshot of csv file in downloads folder](documentation/screencaps/export_dataScreencap.png)
 
-![Screenshot of csv file contents]()
-
-#### Use pyperclip module to copy csv data to clipboard
-
-If a FileNotFoundError is raised, indicating that the user's download's folder is not in the expected directory, pyperclip is used to copy the csv data to the user's clipboard. **The user is asked to confirm this, in order to prevent the accidental deletion of data from the clipboard without the user's knowedge** (Not yet implemented - WIP).
-
-A message is displayed to the user explaining that a FileNotFoundError was raised and so this method was used. 
+![Screenshot of csv file contents](documentation/screencaps/exportedDataFileScreencap.png)
 
 #### Print data in terminal for user to manually copy/paste
 
-Finally, if Pyperclip is unable to copy to the local clipboard (for example, the user is running the app via the Heroku deployment, rather than locally).
+If a FileNotFoundError occurs (i.e. the app is being run via a Heroku deployment), the data is printed into the terminal for the user to manually copy and paste as needed.
 
-The user is told that pyperclip is unable to copy their data to the clipboard, and that their data will be printed in the terminal in csv format for manual copy/pasting.
-
-![Screenshot showing pyperclip error message and printing of csv data in the terminal]()
+![Screenshot of csv data in Heroku deployment](documentation/screencaps/exportingDataHerokuScreencap.png)
 
 <a id=data-model></a>
 
