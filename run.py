@@ -343,30 +343,35 @@ def export_data():
         input('Press the enter key to return to the main menu')
         clear_terminal()
         user_options()
+    # except block runs if filepath to
+    # 'os.path.expanduser('~/Downloads')' is not found
     except FileNotFoundError as e:
         try:
             clear_terminal()
             # Get data from Google Sheets
             todo_list = SHEET.worksheet('Tasks').get_all_values()
             done_list = SHEET.worksheet('Done').get_all_values()
-
-            print(f'''Error: "{e}"
-Cannot copy data to clipboard in Heroku deployment.''')
+            # Displays error to user and tells them that data
+            # Will be printed to display
+            print(f'''Error: "{e}"''')
             print('Printing data in csv format for manual copy/paste...\n')
             # Print data in CSV format to terminal
             print('To Do List:')
             for row in todo_list:
                 print(','.join(row))
-
+            # Print data from 'Done' sheet
             print('\nCompleted Tasks:')
             for row in done_list:
                 print(','.join(row))
-
+            # Displays csv data on screen until user takes action
             input('\nPress the Enter key to return to the menu: ')
             app_load()
+        # Prints error message to user
         except Exception as e:
             print(f'Error exporting data: {e}')
+            # Keeps error message on screen until user takes action
             input('\nPress the Enter key to return to the menu: ')
+            # Returns to app_load, main user options menu
             app_load()
 
 
