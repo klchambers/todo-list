@@ -391,7 +391,7 @@ def user_options():
     choice = input('''\nWhat would you like to do?\n
 1: Create a new task\n2: Mark a task as done
 3: Delete a task from your To Do list\n4: View your completed tasks
-5: Export your tasks list to CSV\nOr type 'exit' to quit: ''')
+5: Export your data to csv\nOr type 'exit' to quit: ''')
     # Checking user input against the listed options
     if choice == str(1):
         print("")
