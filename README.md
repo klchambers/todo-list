@@ -71,7 +71,7 @@ In the current version, the user is given the option to quit the app from the ma
 
 This ensures that the user has multiple points at which they can exit the app. A particularly simple example of this logic allows the user to run the app, view their tasks to complete, and quit the app with as little friction as possible.
 
-#### Exporting data
+#### Data export function
 
 The functionality to export data from the app in csv format has been added since the inception of this project. From the main menu, the user has the option to export their data in csv format by selecting option 5. In doing so, the application will write this data to a csv file and attempt to save this file to the users 'Downloads' folder. If this is not possible (i.e. the user is running the app via the Heroku deployment, or has moved their Downloads folder to an unexpected filepath), the application will make an exception to the exporting process and present the data to the user in the terminal. In doing so, the user is able to copy and paste their data as needed with minimal inconvenience.
 
@@ -187,7 +187,7 @@ Once cleared, all data is removed from the 'Done' worksheet and the user is take
 
 ### Exporting Data
 
-By slecting 5 from the options menu, the user can export their data in CSV format.
+By selecting 5 from the options menu, the user can export their data in CSV format.
 
 The export_data function uses try/except blocks to determine the method used to deliver this data to the user
 
