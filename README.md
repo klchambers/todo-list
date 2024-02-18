@@ -248,12 +248,14 @@ Tasks that have been completed are moved from the "Tasks" worksheet to the "Done
 | 5       | Enter a task name and submit    | Task is added to the task list                         |
 | 6       | View tasks in the task list     | All tasks are displayed in the task list               |
 | 7       | Mark a task as done             | Task is moved to the completed tasks list              |
-| 8       | Delete a task                   | Task is removed from the task list                     |
-| 9       | View completed tasks list       | Completed tasks list is cleared                        |
-| 10      | Clear the completed tasks list  | Confirmation prompt is displayed                       |
-| 10      | Cancel clear of completed tasks | List clear procedure cancelled and returns to main menu|
-| 11      | Confirm clear of completed tasks| Completed tasks list is now empty                      |
-| 12      | Exit app                        | Terminal clears and program exits                      |
+| 8       | Export data to csv              | Data is saved in csv format to the downloads folder    |
+| 9       | Export date using Heroku deployment | FileNotFoundError occurs and data is printed to terminal |
+| 10      | Delete a task                   | Task is removed from the task list                     |
+| 11      | View completed tasks list       | Completed tasks list is cleared                        |
+| 12      | Clear the completed tasks list  | Confirmation prompt is displayed                       |
+| 13      | Cancel clear of completed tasks | List clear procedure cancelled and returns to main menu|
+| 14      | Confirm clear of completed tasks| Completed tasks list is now empty                      |
+| 15      | Exit app                        | Terminal clears and program exits                      |
 
 
 <a id=pep8-code-analysis></a>
