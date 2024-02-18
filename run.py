@@ -190,7 +190,7 @@ def delete_task():
     # Displaying To Do list to user
     display_list()
     # Adding user's task to delete to find_task variable
-    find_task = input("""Which task would you like to delete?
+    find_task = input("""\nWhich task would you like to delete?
 Alternatively, Enter 'MENU' to return to options menu: """)
     # Checking if input is equal to 'menu'
     # .lower() used in case user capitalises any letter
@@ -206,7 +206,7 @@ Alternatively, Enter 'MENU' to return to options menu: """)
         confirm_deletion = input("""Type YES to confirm,\
  or NO to return to menu (input is case-sensitive) """)
         if confirm_deletion == "YES":
-            # Adding 1 to target correct row, and to prevent deleting row 0
+            # Adding 2 to target correct row, and to prevent deleting row 0
             task_list.delete_rows(task_index + 2)
             app_load()
         else:
@@ -221,12 +221,12 @@ Alternatively, Enter 'MENU' to return to options menu: """)
             # or stopped by the user, will repeat if invalid data entered
             while deleting is True:
                 print(f"You are about to delete the task: \
-    '{task_to_delete.value}'")
+'{task_to_delete.value}'")
                 print("Are you sure?")
                 print("")
                 # Confirming user's choice
-                confirm_deletion = input("Type YES to confirm,\
-    or NO to return to menu (input is case-sensitive): ")
+                confirm_deletion = input("Type YES to confirm, \
+or NO to return to menu (input is case-sensitive): ")
                 # Deleting task row if YES
                 if confirm_deletion == 'YES':
                     print(f"Deleting {task_to_delete.value}...")
@@ -337,8 +337,9 @@ def export_data():
 
             for value in done_list:
                 writer.writerow(value)
-        print(f'CSV file generated: {file_name}')
-        print(f'''You can find the file in the Downloads folder: \
+        print(f'''CSV file generated:
+{file_name}''')
+        print(f'''You can find the file in the Downloads folder:
 {downloads_path}''')
         input('Press the enter key to return to the main menu')
         clear_terminal()
@@ -359,21 +360,23 @@ Enter YES to copy csv data, or NO to return to the main menu.
                 # Convert data to string and concatenate
                 data_to_copy += str(data) + ', ' + '\n\n'
             pyperclip.copy(data_to_copy)
-            input('''Data successfully copied to clipboard!\n
-    Press the Enter key to return to the main menu''')
+            input('''Data successfully copied to clipboard! \n
+Press the Enter key to return to the main menu''')
         elif choice == 'NO':
             clear_terminal()
             app_load()
         else:
             print('Invalid input. Please try again.')
             export_data()
-    finally:
+    except Exception as e:
         try:
+            clear_terminal()
             # Get data from Google Sheets
             todo_list = SHEET.worksheet('Tasks').get_all_values()
             done_list = SHEET.worksheet('Done').get_all_values()
 
-            print('Cannot copy data to clipboard in Herokud deployment.')
+            print(f'''Error: "{e}"
+Cannot copy data to clipboard in Heroku deployment.''')
             print('Printing data in csv format for manual copy/paste...\n')
             # Print data in CSV format to terminal
             print('To Do List:')
@@ -387,7 +390,7 @@ Enter YES to copy csv data, or NO to return to the main menu.
             input('\nPress the Enter key to return to the menu: ')
             app_load()
         except Exception as e:
-            print(f'Error exporting Google Sheets data: {e}')
+            print(f'Error exporting data: {e}')
             input('\nPress the Enter key to return to the menu: ')
             app_load()
 
