@@ -103,8 +103,6 @@ This ensures that the user has multiple points at which they can exit the app. A
 
 ## Features
 
-
-
 <a id=main-menu></a>
 
 ### Main menu
