@@ -170,6 +170,11 @@ def create_task():
         print(f'You cannot create a task called {task}...')
         input("Press enter to try again.")
         create_task()
+    elif task.strip().isdigit():
+        print("\nYou cannot enter a number as a task name.")
+        print("\nPlease try again.")
+        input("\nPress enter to continue")
+        create_task()
     # Assigning tasks worksheet to task_sheet variable
     task_list = SHEET.worksheet('Tasks')
     # Appending the task to the worksheet row
