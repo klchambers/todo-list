@@ -285,7 +285,22 @@ Code has been passed through the [Code Institute Pep8 Linter](https://pep8ci.her
 
 ### Bugs and Challenges
 
+The program has been thoroughly tested for issues and there are no known bugs or issues with the program in its current iteration.
 
+During development of this project the following issues were identified and amended:
+
+#### 1. Identical Filenames Issue
+Not calling `datetime.now()` while generating filenames resulted in identical filenames being created, leading to the overwrite of existing files. This issue occurred due to the lack of a unique timestamp in the filename generation process.
+
+#### 2. Handling Empty Task Lists
+An update to the gspread API caused an issue where an empty task list was not recognized correctly. This occurred because an empty list (`[]`) was mistakenly recognized as a task. To resolve this, adjustments were made to check for `[[]]` instead of `[]` to accurately identify an empty task list, and a known compatible version of gspread has been specified in requirements.txt.
+
+#### 3. Incorrect Index Targeting
+Due to the addition of a header row in the worksheet, targeting the wrong index led to inaccuracies in data manipulation. This caused discrepancies in accessing and modifying data within the application, resulting in incorrect operations being performed on task items. Adjustments were made to correct the index targeting and ensure accurate data manipulation.
+
+#### 4. Date Formatting Issue
+
+Unique characters in the date format provided by datetime caused an issue when creating worksheet names. The gspread API threw an exception when creating new worksheets when the export_data function was called. This issue likely arose from incompatible characters or formatting styles, resulting in errors or unexpected behavior. Reformatting the date format resolved this issue, ensuring compatibility and consistency in worksheet naming conventions.
 
 <a id=development-and-deployment></a>
 
