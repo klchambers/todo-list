@@ -119,7 +119,7 @@ If the user is running the app locally with the downloads folder in it's expecte
 
 Upon running the application, the user is presented with their To Do list and the main menu. If the To Do list is empty, a message telling the user that they have no tasks to complete is displayed.
 
-The menu consists of five options. Four of these are accessible by entering a number from 1 - 4, while the fifth (exiting the application) is triggered by entering the word `exit`. This prompt was chosen in favour over a numerical command in order to prevent accidental exits, to improve the user experience.
+The menu consists of five options. Four of these are accessible by entering a number from 1 - 4, while the fifth (exiting the application) is triggered by entering the word `exit`. This prompt was chosen in favour of a numerical command to prevent accidental exits, to improve the user experience.
 
 ![Main menu screenshot](documentation/screencaps/app_loadScreencap.png)
 
@@ -133,7 +133,7 @@ There are a handful of keywords (stored in the important_keywords) variable that
 
 `important_keywords = ['quit', 'menu', 'clear', 'yes', 'no']`
 
-These keywords have been reserved for prompts that are used elsewhere in the application. It is important that these words are not used as Task names as the creation of such tasks results in list items that cannot be marked as completed or removed from the To Do list.
+These keywords have been reserved for prompts that are used elsewhere in the application. These words mustn't be used as Task names as the creation of such tasks results in list items that cannot be marked as completed or removed from the To Do list.
 
 Once a new task is created, the updated To Do list is printed to the terminal along with the main menu options.
 
@@ -195,9 +195,9 @@ By selecting 5 from the options menu, the user can export their data in CSV form
 
 The export_data function uses try/except blocks to determine the method used to deliver this data to the user
 
-#### Automatic download of csv file
+#### Automatic download of CSV file
 
-The initial try block creates a file using the datetime.now() method (used to create a unique file name, allowing multiple files to be exported on the same day). This file is written using the csv.writer() method to write the csv file, and os.path to save it to the user's downloads folder.
+The initial try block creates a file using the datetime.now() method (used to create a unique file name, allowing multiple files to be exported on the same day). This file is written using the csv.writer() method to write the CSV file, and os.path to save it to the user's downloads folder.
 
 ![Screenshot of csv file in downloads folder](documentation/screencaps/export_dataScreencap.png)
 
@@ -207,7 +207,7 @@ The initial try block creates a file using the datetime.now() method (used to cr
 
 If the user exports their data but a path to their downloads folder cannot be found (i.e. it has been moved from the expected location or renamed, or the user is running the app via the Heroku deployment), an except block runs.
 
-When this except block runs due to error or exception, an error message is printed to the user explaining that a csv file cannot be saved to the downloads folder, and that their data has been saved to a new worksheet.
+When this except block runs due to an error or exception, an error message is printed to the user explaining that a csv file cannot be saved to the downloads folder and that their data has been saved to a new worksheet.
 
 A URL that links to the spreadsheet (view-only) is printed in the terminal for the user to follow.
 
@@ -217,7 +217,7 @@ A URL that links to the spreadsheet (view-only) is printed in the terminal for t
 
 ### Data Model
 
-Data is stored in a Google Sheet. The user can export data to other sheets to be saved and archived and access this via a URL with view-only permissions. These permissions are in place in order to prevent the user from making alterations to the sheet, its API permissions, etc, which could break essential functionality of the application.
+Data is stored in a Google Sheet. The user can export data to other sheets to be saved and archived and access this via a URL with view-only permissions. These permissions are in place in order to prevent the user from making alterations to the sheet, its API permissions, etc, which could break the essential functionality of the application.
 
 #### Tasks Worksheet
 
@@ -237,10 +237,10 @@ Tasks that have been completed are moved from the "Tasks" worksheet to the "Done
 
 ### Further Development and Future Features
 
-Ideas for further development and future features which could further ehance the user experience and functionality of this application include:
+Ideas for further development and future features which could further enhance the user experience and functionality of this application include:
 
 
-- **Task Priority:** Allow users to set task priorities and sort tasks based on priority levels. Print high priority tasks in red, medium in yellow, and low in green to provide visual indication to user.
+- **Task Priority:** Allow users to set task priorities and sort tasks based on priority levels. Print high-priority tasks in red, medium in yellow, and low in green to provide a visual indication to the user.
 - **Due Dates:** Enable users to set due dates for tasks and receive reminders or notifications for upcoming deadlines.
 - **Task Categories:** Implement task categorization to help users organize their tasks efficiently.
 
@@ -260,15 +260,15 @@ Ideas for further development and future features which could further ehance the
 | 4       | Enter an invalid task name (e.g. consisting of only a number, or an important keyword such as 'clear' or 'no') | Error message is displayed |
 | 5       | Enter a task name and submit    | Task is added to the task list                         |
 | 6       | View tasks in the task list     | All tasks are displayed in the task list               |
-| 7       | Enter text into task_done function that does not match any existing tasks | Error message displayed stating 'No task found matching {x}... Please try again.' before asking for input again |
+| 7       | Enter text into task_done function that does not match any existing tasks | Error message is displayed stating 'No task found matching {x}... Please try again.' before asking for input again |
 | 8       | Mark a task as done             | Task is moved to the completed tasks list              |
-| 9       | Export data to csv              | Data is saved in csv format to the downloads folder    |
-| 10       | Export data using Heroku deployment | FileNotFoundError occurs, new worksheet is created and URL shared with user |
+| 9       | Export data to CSV              | Data is saved in CSV format to the downloads folder    |
+| 10       | Export data using Heroku deployment | FileNotFoundError occurs, and a new worksheet is created and the URL is shared with the user |
 | 11      | Delete a task                   | Task is removed from the task list                     |
-| 12      | Enter text into delete_task function that does not match any existing tasks | Error message displayed stating 'No task found matching {x}... Please try again.' before asking for input again |
+| 12      | Enter text into the delete_task function that does not match any existing tasks | Error message is displayed stating 'No task found matching {x}... Please try again.' before asking for input again |
 | 13      | View completed tasks list       | Completed tasks list is cleared                        |
 | 14      | Clear the completed tasks list  | Confirmation prompt is displayed                       |
-| 15      | Cancel clear of completed tasks | List clear procedure cancelled and returns to main menu|
+| 15      | Cancel clear of completed tasks | List clear procedure cancelled and returns to the main menu|
 | 16      | Confirm clear of completed tasks| Completed tasks list is now empty                      |
 | 17      | Exit app                        | Terminal clears and program exits                      |
 
@@ -289,20 +289,20 @@ Code has been passed through the [Code Institute Pep8 Linter](https://pep8ci.her
 
 The program has been thoroughly tested for issues and there are no known bugs or issues with the program in its current iteration.
 
-During development of this project the following issues were identified and amended:
+During the development of this project, the following issues were identified and amended:
 
 #### 1. Identical Filenames Issue
 Not calling `datetime.now()` while generating filenames resulted in identical filenames being created, leading to the overwrite of existing files. This issue occurred due to the lack of a unique timestamp in the filename generation process.
 
 #### 2. Handling Empty Task Lists
-An update to the gspread API caused an issue where an empty task list was not recognized correctly. This occurred because an empty list (`[]`) was mistakenly recognized as a task. To resolve this, adjustments were made to check for `[[]]` instead of `[]` to accurately identify an empty task list, and a known compatible version of gspread has been specified in requirements.txt.
+An update to the gspread API caused an issue where an empty task list was not recognized correctly. This occurred because an empty list (`[]`) was mistakenly recognized as a task. To resolve this, adjustments were made to check for `[[]]` instead of `[]` to accurately identify an empty task list and a known compatible version of gspread has been specified in requirements.txt.
 
 #### 3. Incorrect Index Targeting
 Due to the addition of a header row in the worksheet, targeting the wrong index led to inaccuracies in data manipulation. This caused discrepancies in accessing and modifying data within the application, resulting in incorrect operations being performed on task items. Adjustments were made to correct the index targeting and ensure accurate data manipulation.
 
 #### 4. Date Formatting Issue
 
-Unique characters in the date format provided by datetime caused an issue when creating worksheet names. The gspread API threw an exception when creating new worksheets when the export_data function was called. This issue likely arose from incompatible characters or formatting styles, resulting in errors or unexpected behavior. Reformatting the date format resolved this issue, ensuring compatibility and consistency in worksheet naming conventions.
+Unique characters in the date format provided by datetime caused an issue when creating worksheet names. The gspread API threw an exception when creating new worksheets when the export_data function was called. This issue likely arose from incompatible characters or formatting styles, resulting in errors or unexpected behaviour. Reformatting the date format resolved this issue, ensuring compatibility and consistency in worksheet naming conventions.
 
 <a id=development-and-deployment></a>
 
@@ -314,7 +314,7 @@ Unique characters in the date format provided by datetime caused an issue when c
 
 ### Development
 
-Development was started by cloning Code Institute's project template (available [here](https://github.com/Code-Institute-Org/p3-template)), development was carried out in VSCode with changes pushed to GitHub.
+Development was started by cloning Code Institute's project template (available [here](https://github.com/Code-Institute-Org/p3-template)), and development was carried out in VSCode with changes pushed to GitHub.
 
 <a id=contributing></a>
 
@@ -326,7 +326,37 @@ To contribute, make a pull request from the [project repository](https://github.
 
 ### Deployment
 
+1. **Create a Heroku Account:**
+   Sign up for a free account on [Heroku's website](https://signup.heroku.com/).
 
+2. **Log in to Heroku Dashboard:**
+   Open your web browser and log in to the [Heroku dashboard](https://dashboard.heroku.com/) using your Heroku account credentials.
+
+3. **Create a New App:**
+   - Click on the "New" button.
+   - Select "Create new app."
+   - Enter a unique name for your app.
+   - Choose the region closest to your location.
+
+4. **Set Up Google API Credentials:**
+   - Follow the instructions from Google to create a service account and download the JSON key file.
+   - Ensure you securely store this file.
+
+5. **Set Google API Credentials as Config Vars:**
+   - In your Heroku app's dashboard, navigate to the "Settings" tab.
+   - Click on "Reveal Config Vars."
+   - Add a new config var with the key `GOOGLE_APPLICATION_CREDENTIALS` and set its value to the path of your JSON key file.
+
+6. **Deploy Your App:**
+   - Go back to the "Deploy" tab in your Heroku app's dashboard.
+   - Choose your deployment method (GitHub, Dropbox, Heroku Git).
+   - Follow the instructions to connect your repository and deploy your app.
+
+7. **Visit Your App:**
+   - Once the deployment is successful, visit your app by opening the provided URL in your web browser.
+
+8. **View Logs:**
+   - If you encounter any issues, view the logs of your running app in the Heroku dashboard under the "More" menu -> "View logs."
 
 <a id=technologies-used></a>
 
@@ -346,13 +376,13 @@ To contribute, make a pull request from the [project repository](https://github.
 
 ## Acknowledgements
 
-Using os.path.expanduser('~/Downloads') to download csv file to users download folder adapted from code posted to Stack Overflow by users [theDude](https://stackoverflow.com/users/12737389/thedude) and [nagyl](https://stackoverflow.com/users/11080283/nagyl) in [this thread](https://stackoverflow.com/questions/60475285/accessing-users-download-folder-in-python). 
+Using os.path.expanduser('~/Downloads') to download CSV file to user download folder adapted from code posted to Stack Overflow by users [theDude](https://stackoverflow.com/users/12737389/thedude) and [nagyl](https://stackoverflow.com/users/11080283/nagyl) in [this thread](https://stackoverflow.com/questions/60475285/accessing-users-download-folder-in-python). 
 
-Code used to write rows to csv using the built-in Python csv module adapted from code posted in [this](https://ioflood.com/blog/python-write-to-csv/) blog post by Gabriel Ramuglia, posted to the [ioflood.com blog](https://ioflood.com/blog) on 13 September, 2023.
+Code used to write rows to CSV using the built-in Python csv module adapted from code posted in [this](https://ioflood.com/blog/python-write-to-csv/) blog post by Gabriel Ramuglia posted to the [ioflood.com blog](https://ioflood.com/blog) on 13 September 2023.
 
-The if/else statement used in clear_terminal to determine os.clear method based on operating system was posted by the user [poke](https://stackoverflow.com/users/216074/poke) in [this](https://stackoverflow.com/questions/2084508/clear-the-terminal-in-python) Stack Overflow thread.
+The if/else statement used in clear_terminal to determine the os.clear method based on the operating system was posted by the user [poke](https://stackoverflow.com/users/216074/poke) in [this](https://stackoverflow.com/questions/2084508/clear-the-terminal-in-python) Stack Overflow thread.
 
-Date formatting using `strftime()` method adapted from an example posted by [NPE](https://stackoverflow.com/users/367273/npe) in [this](https://stackoverflow.com/questions/6288892/python-how-to-convert-datetime-format) Stack Overflow thread.
+Date formatting using the `strftime()` method adapted from an example posted by [NPE](https://stackoverflow.com/users/367273/npe) in [this](https://stackoverflow.com/questions/6288892/python-how-to-convert-datetime-format) Stack Overflow thread.
 
 ANSI character methods to print bold text in the terminal adapted from examples posted by [Peter Mortensen](https://stackoverflow.com/users/63550/peter-mortensen) and [Bacara](https://stackoverflow.com/users/1770999/bacara) in [this](https://stackoverflow.com/questions/8924173/how-can-i-print-bold-text-in-python#:~:text=In%20Python%2C%20escape%20sequences%20are,want%20to%20represent%20in%20bold.) Stack Overflow thread.
 
