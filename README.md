@@ -314,13 +314,13 @@ Unique characters in the date format provided by datetime caused an issue when c
 
 ### Development
 
-
+Development was started by cloning Code Institute's project template (available [here](https://github.com/Code-Institute-Org/p3-template)), development was carried out in VSCode with changes pushed to GitHub.
 
 <a id=contributing></a>
 
 ### Contributing
 
-
+To contribute, make a pull request from the [project repository](https://github.com/klchambers/todo-list). When merged, any changes will automatically be reflected in the live deployment on Heroku.
 
 <a id=deployment></a>
 
