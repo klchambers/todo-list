@@ -250,7 +250,7 @@ or NO to return to menu (input is case-sensitive): ")
         # except statement will handle error if task matching input not found
         except (TypeError, AttributeError):
             print(f'''\nNo task found matching\
-    '{find_task}'... Please try again.\n''')
+ '{find_task}'... Please try again.\n''')
             # Continue to the delete_task function again
             delete_task()
 
