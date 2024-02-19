@@ -308,7 +308,9 @@ Please try again.\n')
 
 def export_data():
     """
-    writes data in Tasks worksheet to CSV format and saves in directory
+    Writes data in Tasks worksheet to CSV format and saves in downloads folder.
+    If path to downloads folder not found, prints data to terminal in csv
+    format for the user to copy and paste as needed
     """
     try:
         # Assigns string to be saved to the file name
