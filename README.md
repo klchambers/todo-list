@@ -34,6 +34,8 @@
 
 To Do List is a CLI application written in Python that allows a user to record and store their To Do tasks, mark tasks as complete, and see when they created or completed tasks.
 
+![Mockup of Application in Heroku mock terminal across different device screens](documentation/amIResponsiveMockup.png)
+
 <a id=deployed-site></a>
 
 ## Deployed Site
@@ -213,6 +215,8 @@ A URL that links to the spreadsheet (view-only) is printed in the terminal for t
 
 ### Data Model
 
+Data is stored in a Google Sheet. The user can export data to other sheets to be saved and archived and access this via a URL with view-only permissions. These permissions are in place in order to prevent the user from making alterations to the sheet, its API permissions, etc, which could break essential functionality of the application.
+
 #### Tasks Worksheet
 
 The core of the application revolves around managing tasks. These tasks are stored in a worksheet named "Tasks" within a Google Sheets document. Each task is represented as a row in the worksheet, with the following structure:
@@ -231,13 +235,16 @@ Tasks that have been completed are moved from the "Tasks" worksheet to the "Done
 
 ### Further Development and Future Features
 
+Ideas for further development and future features which could further ehance the user experience and functionality of this application include:
 
+
+- **Task Priority:** Allow users to set task priorities and sort tasks based on priority levels. Print high priority tasks in red, medium in yellow, and low in green to provide visual indication to user.
+- **Due Dates:** Enable users to set due dates for tasks and receive reminders or notifications for upcoming deadlines.
+- **Task Categories:** Implement task categorization to help users organize their tasks efficiently.
 
 <a id=testing-and-validation></a>
 
 ## Testing and Validation
-
-
 
 <a id=manual-testing-methodology></a>
 
