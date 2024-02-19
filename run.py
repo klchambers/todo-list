@@ -325,12 +325,13 @@ def export_data():
         todo_list = SHEET.worksheet('Tasks').get_all_values()
         # Getting values from Done worksheet
         done_list = SHEET.worksheet('Done').get_all_values()
+        print('''An attempt will be made to save your \
+data in your downloads folder...\n''')
         # Adapted from code posted to ioflood.com/blog by
         # Gabriel Ramuglia 13/9/23
         with open(file_to_export, 'w', newline='') as file:
             # Assigning headers to field_headers variable to
             # print on first line
-
             writer = csv.writer(file)
             writer.writerow(['To Do List:'])
 
@@ -352,9 +353,10 @@ def export_data():
     # 'os.path.expanduser('~/Downloads')' is not found
     except FileNotFoundError as e:
         try:
-            print(f'An error occurred: {e}')
-            print('\ncsv data cannot be saved to your downloads folder')
-            # unique_name = datetime.t
+            print(f'\nAn error occurred: {e}')
+            print('''As a result, csv data cannot \
+be saved to your downloads folder.''')
+
             timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
             new_worksheet_name = f'data_{timestamp}'
             new_ws = SHEET.add_worksheet(
@@ -367,13 +369,13 @@ def export_data():
             for row in done_list:
                 new_ws.append_row(row)
             ws_link = new_ws.url
-            print(f'''Your data has been saved to the worksheet:\
+            print(f'''\nYour data has been saved to the worksheet:\
  {new_worksheet_name}''')
-            print(f'Your data can be accessed here: {ws_link}')
-            input('Press the Enter key to return to the main menu')
+            print(f'\nYour data can be accessed here: {ws_link}')
+            input('\nPress the Enter key to return to the main menu')
             app_load()
         except Exception as e:
-            print(f'An error occurred: {e}')
+            print(f'\nAn error occurred: {e}')
             input('\nPress the enter key to return to the main menu')
             clear_terminal()
             app_load()
