@@ -320,16 +320,13 @@ def export_data():
         # Stack Overflow by users theDude and nagyl
         downloads_path = os.path.expanduser('~/Downloads')
         file_to_export = os.path.join(downloads_path, file_name)
-
+        # Getting values from Tasks worksheet
+        todo_list = SHEET.worksheet('Tasks').get_all_values()
+        # Getting values from Done worksheet
+        done_list = SHEET.worksheet('Done').get_all_values()
         # Adapted from code posted to ioflood.com/blog by
         # Gabriel Ramuglia 13/9/23
         with open(file_to_export, 'w', newline='') as file:
-            # Getting valies from Tasks worksheet
-            todo_list = SHEET.worksheet('Tasks').get_all_values()
-            #
-            done_list = SHEET.worksheet('Done').get_all_values()
-
-            # all_data = SHEET.worksheets()
             # Assigning headers to field_headers variable to
             # print on first line
 
@@ -354,31 +351,18 @@ def export_data():
     # 'os.path.expanduser('~/Downloads')' is not found
     except FileNotFoundError as e:
         try:
-            clear_terminal()
-            # Get data from Google Sheets
-            todo_list = SHEET.worksheet('Tasks').get_all_values()
-            done_list = SHEET.worksheet('Done').get_all_values()
-            # Displays error to user and tells them that data
-            # Will be printed to display
-            print(f'''Error: "{e}"''')
-            print('Printing data in csv format for manual copy/paste...\n')
-            # Print data in CSV format to terminal
-            print('To Do List:')
-            for row in todo_list:
-                print(','.join(row))
-            # Print data from 'Done' sheet
-            print('\nCompleted Tasks:')
-            for row in done_list:
-                print(','.join(row))
-            # Displays csv data on screen until user takes action
-            input('\nPress the Enter key to return to the menu: ')
-            app_load()
-        # Prints error message to user
+            print(f'An error occurred: {e}')
+            print('\ncsv data cannot be saved to your downloads folder')
+            new_worksheet_name = f'data_{datetime.now()}'
+            new_ws = SHEET.create(new_worksheet_name)
+            for data in todo_list:
+                new_ws.update(data)
+            for data in done_list:
+                new_ws.update(data)
         except Exception as e:
-            print(f'Error exporting data: {e}')
-            # Keeps error message on screen until user takes action
-            input('\nPress the Enter key to return to the menu: ')
-            # Returns to app_load, main user options menu
+            print(f'An error occurred: {e}')
+            input('\nPress the enter key to return to the main menu')
+            clear_terminal()
             app_load()
 
 
