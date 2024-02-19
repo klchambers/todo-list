@@ -356,21 +356,28 @@ data in your downloads folder...\n''')
             print(f'\nAn error occurred: {e}')
             print('''As a result, csv data cannot \
 be saved to your downloads folder.''')
-
+            # Formatting datetime without special characters
             timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-            new_worksheet_name = f'data_{timestamp}'
+            # Creating file name with timestamp for unique name
+            new_worksheet_name = f'exportData{timestamp}'
+            # Creating a new worksheet
             new_ws = SHEET.add_worksheet(
+                # Setting title of worksheet
                 title=new_worksheet_name,
-                # +2 for headers
+                # +2 for header row
                 rows=len(todo_list) + len(done_list) + 2,
                 cols=20)
+            # Adding data from 'Tasks'
             for row in todo_list:
                 new_ws.append_row(row)
+            # Adding data from 'Done'
             for row in done_list:
                 new_ws.append_row(row)
+            # Getting link to new worksheet
             ws_link = new_ws.url
             print(f'''\nYour data has been saved to the worksheet:\
  {new_worksheet_name}''')
+            # Printing URL in terminal
             print(f'\nYour data can be accessed here: {ws_link}')
             input('\nPress the Enter key to return to the main menu')
             app_load()
