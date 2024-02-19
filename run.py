@@ -315,7 +315,8 @@ def export_data():
     try:
         # Assigns string to be saved to the file name
         # datetime.now() gets current date and time to create unique file names
-        file_name = f'tasks_list_{datetime.now()}.csv'
+        timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        file_name = f'tasks_list_{timestamp}.csv'
         # os.path.expand user adapted from code posted to
         # Stack Overflow by users theDude and nagyl
         downloads_path = os.path.expanduser('~/Downloads')
@@ -353,12 +354,23 @@ def export_data():
         try:
             print(f'An error occurred: {e}')
             print('\ncsv data cannot be saved to your downloads folder')
-            new_worksheet_name = f'data_{datetime.now()}'
-            new_ws = SHEET.create(new_worksheet_name)
-            for data in todo_list:
-                new_ws.update(data)
-            for data in done_list:
-                new_ws.update(data)
+            # unique_name = datetime.t
+            timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+            new_worksheet_name = f'data_{timestamp}'
+            new_ws = SHEET.add_worksheet(
+                title=new_worksheet_name,
+                # +2 for headers
+                rows=len(todo_list) + len(done_list) + 2,
+                cols=20)
+            for row in todo_list:
+                new_ws.append_row(row)
+            for row in done_list:
+                new_ws.append_row(row)
+            print(f'''Your data has been saved to the worksheet:\
+ {new_worksheet_name}''')
+            print('Your data can be accessed here: ')
+            input('Press the Enter key to return to the main menu')
+            app_load()
         except Exception as e:
             print(f'An error occurred: {e}')
             input('\nPress the enter key to return to the main menu')
