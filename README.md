@@ -42,6 +42,8 @@ To Do List is a CLI application written in Python that allows a user to record a
 
 The program has been deployed to Heroku and can be accessed [here](https://pp3todoapp-ab2e466bceb0.herokuapp.com/).
 
+[This link](https://docs.google.com/spreadsheets/d/1_puHXZT1sl3zTmNoYB94EQVYmmJFoaFEG41xYmbzniU/edit?usp=sharing) directs to a view-only copy of the Google Sheets spreadsheet where the 'Tasks' and 'Done' worksheets are stored. Any data exported via the application's export_data function will also be saved and archived in a worksheet in this document.
+
 <a id=user-experience></a>
 
 ## User Experience
