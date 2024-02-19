@@ -119,7 +119,7 @@ If the user is running the app locally with the downloads folder in it's expecte
 
 Upon running the application, the user is presented with their To Do list and the main menu. If the To Do list is empty, a message telling the user that they have no tasks to complete is displayed.
 
-The menu consists of five options. Four of these are accessible by entering a number from 1 - 4, while the fifth (exiting the application) is triggered by entering the word `exit`. This prompt was chosen in favour of a numerical command to prevent accidental exits, to improve the user experience.
+The menu consists of six options. Five of these are accessible by entering a number from 1 - 5, while the sixth (exiting the application) is triggered by entering the word `exit`. This prompt was chosen in favour of a numerical command to prevent accidental exits, to improve the user experience.
 
 ![Main menu screenshot](documentation/screencaps/app_loadScreencap.png)
 
@@ -129,7 +129,7 @@ The menu consists of five options. Four of these are accessible by entering a nu
 
 From the main menu, entering `1` calls the create_task function, and the user is asked to enter their new task.
 
-There are a handful of keywords (stored in the important_keywords) variable that the user is forbidden from entering as a task name:
+There are a handful of keywords (stored in the important_keywords variable) that the user is forbidden from entering as a task name:
 
 `important_keywords = ['quit', 'menu', 'clear', 'yes', 'no']`
 
