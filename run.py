@@ -366,9 +366,10 @@ def export_data():
                 new_ws.append_row(row)
             for row in done_list:
                 new_ws.append_row(row)
+            ws_link = new_ws.url
             print(f'''Your data has been saved to the worksheet:\
  {new_worksheet_name}''')
-            print('Your data can be accessed here: ')
+            print(f'Your data can be accessed here: {ws_link}')
             input('Press the Enter key to return to the main menu')
             app_load()
         except Exception as e:
