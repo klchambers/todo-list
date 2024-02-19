@@ -177,13 +177,9 @@ By entering `4` from the options menu, the user can view a log of their complete
 
 Three options are presented: `menu`, which takes the user back to the options menu, `clear`, to delete all data from this list, and `quit`, which calls the built-in Python `exit()` function and quits the app.
 
-![Completed tasks list screenshot](documentation/screencaps/task_doneIndexInProgress.png)
-
-![Completed tasks list screenshot](documentation/screencaps/task_doneNameInProgress.png)
-
 When `clear` is chosen, the user is asked to confirm their choice. This Yes/No option is case-sensitive to defend against the possibility of accidental deletion of unrecoverable data.
 
-![Clear completed tasks list screenshot](documentation/screencaps/clearDoneTasks.png)
+![Clear completed tasks screenshot](documentation/screencaps/clearDoneTasks.png)
 
 Once cleared, all data is removed from the 'Done' worksheet and the user is taken back to the main menu.
 
