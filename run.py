@@ -170,6 +170,8 @@ def create_task():
         print(f'You cannot create a task called {task}...')
         input("Press enter to try again.")
         create_task()
+    # Checking that task is not a number as this could
+    # conflict with task index numbers
     elif task.strip().isdigit():
         print("\nYou cannot enter a number as a task name.")
         print("\nPlease try again.")
@@ -213,6 +215,7 @@ Alternatively, Enter 'MENU' to return to options menu: """)
             # Adding 2 to target correct row, and to prevent deleting row 0
             task_list.delete_rows(task_index + 2)
             app_load()
+        # Reload app main menu with no data deleted
         else:
             app_load()
     except ValueError:
@@ -339,7 +342,7 @@ data in your downloads folder...\n''')
             for value in todo_list:
                 writer.writerow(value)
             writer.writerow(['Completed Tasks:'])
-
+            # same iteration of done list, writing to CSV
             for value in done_list:
                 writer.writerow(value)
         print(f'''CSV file generated:
